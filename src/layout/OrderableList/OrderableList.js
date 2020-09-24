@@ -18,7 +18,7 @@ const reorder = (list, srcIndex, destIndex) => {
 const getListStyle = (isDraggingOver) => ({
   background: isDraggingOver ? 'lightblue' : 'lightgrey',
   padding: '5px',
-  width: 250
+  width: '100%'
 });
 
 const getItemStyle = (isDragging, draggableStyle) => ({
