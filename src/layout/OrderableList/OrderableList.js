@@ -11,6 +11,8 @@ const reorder = (list, srcIndex, destIndex) => {
   return result;
 };
 
+const dragIcon = require('../../assets/dragIcon.png');
+
 function OrderableItem(item, index) {
   return (
     <Draggable key={item.id} draggableId={item.id} index={index}>
@@ -25,6 +27,7 @@ function OrderableItem(item, index) {
         >
           { `${index + 1} - ` }
           { item.content }
+          <img src={dragIcon} alt="draggable icon" />
         </div>
       )}
     </Draggable>
