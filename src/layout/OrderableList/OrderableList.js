@@ -20,8 +20,6 @@ function OrderableItem(item, index) {
         <div
           className={snapshot.isDragging ? 'Dragging OrderableItem' : 'NotDragging OrderableItem'}
           ref={provided.innerRef}
-
-            /* eslint-disable react/jsx-props-no-spreading */
           {...provided.draggableProps}
           {...provided.dragHandleProps}
         >
@@ -70,7 +68,6 @@ class OrderableList extends Component {
       <DragDropContext onDragEnd={this.onDragEnd}>
         <Droppable droppableId="droppable">
           {(provided) => (
-            /* eslint-disable react/jsx-props-no-spreading */
             <div
               {...provided.droppableProps}
               ref={provided.innerRef}
