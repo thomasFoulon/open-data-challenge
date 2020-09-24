@@ -14,7 +14,14 @@ function App() {
     <div className="App">
       <Header />
       <MapContainer />
-      <OrderableList />
+      <OrderableList
+        items={[
+          { id: 'a', content: 'PIB' },
+          { id: 'b', content: 'Qualité des transports' },
+          { id: 'c', content: 'Qualité du système de santé' }
+        ]}
+        onChange={() => {}}
+      />
       <ChartBoard />
       <About />
       <Footer />
