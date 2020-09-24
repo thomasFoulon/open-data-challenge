@@ -4,7 +4,7 @@ import './ChartBoard.css';
 
 function ChartBoard() {
   return (
-    <div className="ChartBoard">
+    <div id="ChartBoard" className="ChartBoard">
       Chart Board
     </div>
   );
