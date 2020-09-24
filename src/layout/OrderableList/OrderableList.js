@@ -3,10 +3,6 @@ import { DragDropContext, Draggable, Droppable } from 'react-beautiful-dnd';
 
 import './OrderableList.css';
 
-// function OrderableList() {
-//   return <div className="OrderableList">Orderable List</div>;
-// }
-
 const reorder = (list, srcIndex, destIndex) => {
   const result = Array.from(list);
   const [removed] = result.splice(srcIndex, 1);
@@ -15,39 +11,17 @@ const reorder = (list, srcIndex, destIndex) => {
   return result;
 };
 
-const getListStyle = (isDraggingOver) => ({
-  background: isDraggingOver ? 'lightblue' : 'lightgrey',
-  padding: '5px',
-  width: 250
-});
-
-const getItemStyle = (isDragging, draggableStyle) => ({
-  // some basic styles to make the items look a bit nicer
-  userSelect: 'none',
-  padding: '10px',
-  margin: '0 0 5px 0',
-
-  // change background colour if dragging
-  background: isDragging ? 'lightgreen' : 'grey',
-
-  // styles we need to apply on draggables
-  ...draggableStyle
-});
-
 function OrderableItem(item, index) {
   return (
     <Draggable key={item.id} draggableId={item.id} index={index}>
       {(provided, snapshot) => (
         <div
+          className={snapshot.isDragging ? 'Dragging OrderableItem' : 'NotDragging OrderableItem'}
           ref={provided.innerRef}
 
             /* eslint-disable react/jsx-props-no-spreading */
           {...provided.draggableProps}
           {...provided.dragHandleProps}
-          style={getItemStyle(
-            snapshot.isDragging,
-            provided.draggableProps.style
-          )}
         >
           { `${index + 1} - ` }
           { item.content }
@@ -92,12 +66,12 @@ class OrderableList extends Component {
     return (
       <DragDropContext onDragEnd={this.onDragEnd}>
         <Droppable droppableId="droppable">
-          {(provided, snapshot) => (
+          {(provided) => (
             /* eslint-disable react/jsx-props-no-spreading */
             <div
               {...provided.droppableProps}
               ref={provided.innerRef}
-              style={getListStyle(snapshot.isDraggingOver)}
+              className="OrderableList"
             >
               {items.map((item, index) => (OrderableItem(item, index)))}
               {provided.placeholder}
