@@ -1,7 +1,7 @@
 import React from 'react';
 
 import Header from './layout/Header/Header';
-import Map from './layout/Map/Map';
+import MapContainer from './layout/Map/Map';
 import OrderableList from './layout/OrderableList/OrderableList';
 import About from './layout/About/About';
 import Footer from './layout/Footer/Footer';
@@ -13,7 +13,7 @@ function App() {
   return (
     <div className="App">
       <Header />
-      <Map />
+      <MapContainer />
       <OrderableList />
       <ChartBoard />
       <About />
