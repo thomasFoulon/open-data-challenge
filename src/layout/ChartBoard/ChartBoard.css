@@ -3,4 +3,14 @@
   grid-row: chartBoard-start / chartBoard-end;
 
   background-color: hotpink;
+  flex-direction: row;
+  display: flex;
+}
+
+.countriesSelection {
+  flex: 1;
+}
+
+.temporarySelectedCountries {
+  flex: 1;
 }
