@@ -1,0 +1,7 @@
+.App {
+  display: grid;
+  /* For testing purposes, remove the hard coded height when content is available */
+  grid-template-columns: [full-start orderableList-start ] 30% [orderableList-end map-start] 1fr [map-end full-end];
+  grid-template-rows: [header-start] 6.4rem [header-end map-start orderableList-start] 90vh [ orderableList-end map-end chartBoard-start] 100vh  [chartBoard-end about-start] 100vh [ about-end footer-start] 6.4rem [footer-end];
+  gap: 1.6rem;
+}

@@ -1,0 +1,6 @@
+.ChartBoard {
+  grid-column: full-start / full-end;
+  grid-row: chartBoard-start / chartBoard-end;
+
+  background-color: hotpink;
+}
