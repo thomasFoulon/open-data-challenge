@@ -4,3 +4,17 @@
 
     background-color: cyan;
 }
+
+.OrderableItem {
+    user-select: none;
+    padding: 10px;
+    margin: 0 0 5px 0;
+}
+
+.NotDragging {
+    background-color: grey;
+}
+
+.Dragging {
+    background-color: lightgreen;
+}
