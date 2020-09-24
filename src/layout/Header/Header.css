@@ -1,5 +1,16 @@
 .Header {
     grid-column: full-start / full-end;
     grid-row: header-start / header-end;
-    background-color: orange;
+
+    background-color: var(--color-background-secondary);
+
+    padding-right: 5%;
+    padding-left: 5%;
+
+    display: flex;
+    align-items: center;
+    position: sticky;
+    left: 0;
+    top: 0;
 }
+
