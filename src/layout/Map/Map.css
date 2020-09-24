@@ -1,6 +1,4 @@
 .Map {
-    grid-column: map-start / map-end;
-    grid-row: map-start / map-end;
-
-    background-color: orangered;
+  grid-column: map-start / map-end;
+  grid-row: map-start / map-end;
 }
