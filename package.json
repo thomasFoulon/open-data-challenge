@@ -13,6 +13,7 @@
     "react-leaflet": "^2.7.0",
     "react-router-dom": "^5.2.0",
     "react-router-hash-link": "^2.1.0",
+    "react-leaflet-choropleth": "^2.0.1",
     "react-scripts": "3.4.3"
   },
   "scripts": {
