@@ -3,16 +3,14 @@ import React, { useState } from 'react';
 function CountriesSelection(props) {
   const { countries, selectedCountryIds, onChange } = props;
 
-  const [searchValue, setSearchValue] = useState('');
   const [displayedCountries, setDisplayedCountries] = useState(countries);
 
   const searchCountries = (event) => {
-    const newSearchValue = event.target.value.trim().toLowerCase();
+    const searchValue = event.target.value.trim().toLowerCase();
     const newDisplayedCountries = countries.filter(
-      (item) => item.name.trim().toLowerCase().substr(0, newSearchValue.length)
-        === newSearchValue
+      (item) => item.name.trim().toLowerCase().substr(0, searchValue.length)
+        === searchValue
     );
-    setSearchValue(newSearchValue);
     setDisplayedCountries(newDisplayedCountries);
   };
 
@@ -27,7 +25,7 @@ function CountriesSelection(props) {
 
   return (
     <div className="contriesSelection">
-      <input type="text" value={searchValue} onChange={searchCountries} />
+      <input type="text" onChange={searchCountries} />
       <ul>
         {displayedCountries.map((country) => (
           <li key={country.id}>
@@ -40,10 +38,10 @@ function CountriesSelection(props) {
           </li>
         ))}
       </ul>
-      <button onClick={() => onChange(countries.map((country) => country.id))}>
+      <button type="button" onClick={() => onChange(countries.map((country) => country.id))}>
         Tout sélectionner
       </button>
-      <button onClick={() => onChange([])}>Tout déselectionner</button>
+      <button type="button" onClick={() => onChange([])}>Tout déselectionner</button>
     </div>
   );
 }
