@@ -1,31 +1,35 @@
 import React from 'react';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+} from 'react-router-dom';
 
 import Header from './layout/Header/Header';
-import MapContainer from './layout/Map/Map';
-import OrderableList from './layout/OrderableList/OrderableList';
-import Report from './layout/Report/Report';
+
+import Report from './pages/Report/Report';
+import Main from './pages/Main/Main';
 import Footer from './layout/Footer/Footer';
-import ChartBoard from './layout/ChartBoard/ChartBoard';
 
 import './App.css';
 
 function App() {
   return (
-    <div className="App">
-      <Header />
-      <MapContainer />
-      <OrderableList
-        items={[
-          { id: 'a', content: 'PIB' },
-          { id: 'b', content: 'Qualité des transports' },
-          { id: 'c', content: 'Qualité du système de santé' }
-        ]}
-        onChange={() => {}}
-      />
-      <ChartBoard />
-      <Report />
-      <Footer />
-    </div>
+    <Router>
+      <div className="App">
+        <Header />
+        <Switch>
+          <Route exact path="/">
+            <Main />
+          </Route>
+          <Route path="/report">
+            <Report />
+          </Route>
+        </Switch>
+        <Footer />
+      </div>
+    </Router>
+
   );
 }
 
