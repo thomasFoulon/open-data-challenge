@@ -4,3 +4,20 @@
 
     background-color: cyan;
 }
+
+.OrderableItem {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    user-select: none;
+    padding: 10px;
+    margin: 0 0 5px 0;
+}
+
+.NotDragging {
+    background-color: lightgrey;
+}
+
+.Dragging {
+    background-color: lightsteelblue;
+}
