@@ -38,7 +38,7 @@ class ChartBoard extends Component {
     const { selectedCountries } = this.state;
     const countries = this.countries.filter((country) => selectedCountries.has(country.id));
     return (
-      <div className="ChartBoard">
+      <div id="ChartBoard" className="ChartBoard">
         <CountriesSelection
           className="countriesSelection"
           countries={this.countries}
