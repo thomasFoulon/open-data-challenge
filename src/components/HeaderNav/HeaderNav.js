@@ -1,4 +1,6 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+import { HashLink } from 'react-router-hash-link';
 
 import { sections } from '../../utils/constants';
 
@@ -11,20 +13,21 @@ function HeaderNav({ section, onSectionChange }) {
         <li
           className={`Header__item ${section === sections.MAP ? 'Header__item--selected' : ''}`}
         >
-          <a
-            href="#Map"
+
+          <HashLink
+            to="/#Map"
             className="Header__link Header__link--1"
             onClick={() => {
               if (section !== sections.MAP) onSectionChange(sections.MAP);
             }}
           >
             Map
-          </a>
+          </HashLink>
         </li>
 
         <li className={`Header__item ${section === sections.CHART ? 'Header__item--selected' : ''}`}>
-          <a
-            href="#ChartBoard"
+          <HashLink
+            to="/#ChartBoard"
             className="Header__link Header__link--2"
             onClick={() => {
               if (section !== sections.CHART) onSectionChange(sections.CHART);
@@ -32,19 +35,19 @@ function HeaderNav({ section, onSectionChange }) {
           >
             Charts
 
-          </a>
+          </HashLink>
         </li>
 
         <li className={`Header__item ${section === sections.REPORT ? 'Header__item--selected' : ''}`}>
-          <a
-            href="#Report"
+          <Link
+            to="/report"
             className="Header__link Header__link--3"
             onClick={() => {
               if (section !== sections.REPORT) onSectionChange(sections.REPORT);
             }}
           >
             Report
-          </a>
+          </Link>
         </li>
 
       </ul>
