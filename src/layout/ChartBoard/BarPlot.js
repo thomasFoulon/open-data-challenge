@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import { Chart, Bar } from 'react-chartjs-2';
+import { Chart, HorizontalBar } from 'react-chartjs-2';
 
 export default function BarPlot(props) {
   const { countries } = props;
@@ -8,16 +8,16 @@ export default function BarPlot(props) {
 
   const datasets = [{
     label: 'PIB/hab',
+    property: 'gdp',
     backgroundColor: color('red').alpha(0.5).rgbString(),
     borderColor: 'red',
-    borderWidth: 1,
-    data: countries.map((country) => country.gdp)
+    borderWidth: 1
   }, {
     label: 'Qualité des transports',
+    property: 'transport',
     backgroundColor: color('blue').alpha(0.5).rgbString(),
     borderColor: 'blue',
-    borderWidth: 1,
-    data: countries.map((country) => country.transport)
+    borderWidth: 1
   }];
 
   const [currentDataset, setCurrentDataset] = useState(0);
@@ -28,8 +28,17 @@ export default function BarPlot(props) {
     );
   }
 
+  const sortedCountries = countries.sort(
+    (country1, country2) => country1[datasets[currentDataset].property]
+      < country2[datasets[currentDataset].property]
+  );
+
+  datasets[currentDataset].data = sortedCountries.map(
+    (country) => country[datasets[currentDataset].property]
+  );
+
   const barChartData = {
-    labels: countries.map((country) => country.name),
+    labels: sortedCountries.map((country) => country.name),
     datasets: [datasets[currentDataset]]
   };
 
@@ -46,7 +55,7 @@ export default function BarPlot(props) {
           )}
         </select>
       </div>
-      <Bar
+      <HorizontalBar
         data={barChartData}
         options={{
           responsive: true,
@@ -58,7 +67,7 @@ export default function BarPlot(props) {
             text: 'Comparatif des indicateurs'
           },
           scales: {
-            yAxes: [{
+            xAxes: [{
               display: true,
               ticks: {
                 beginAtZero: true
