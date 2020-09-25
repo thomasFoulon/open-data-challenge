@@ -1,3 +1,25 @@
+:root {
+  --color-primary: #023aff;
+  --color-secondary: #01f1e3;
+
+  --color-background-primary: #f2f4fa;
+  --color-background-secondary: white;
+
+  --color-font: black;
+
+  --color-tertiary-orange: #ffa63f;
+  --color-tertiary-green: #5eff5a;
+  --color-tertiary-red: #ff2d2e;
+  --color-tertiary-purple: #991bfa;
+  --color-tertiary-cyan: #01f1e3;
+  --color-tertiary-black: #05050f;
+  --color-tertiary-blue: #02a4ff;
+
+  --gradient-purple-pink: linear-gradient(to right, #7517f8, #e323ff);
+  --gradient-blue-purple: linear-gradient(to right, #02a4ff, #7d40ff);
+  --gradient-blue-cyan: linear-gradient(to right, #4da1ff, #4dffdf);
+}
+
 *,
 *::after,
 *::before {
@@ -8,7 +30,10 @@
 html {
   box-sizing: border-box;
   /* 1rem => 10px */
-  font-size: 62.5%; 
+  font-size: 62.5%;
+  scroll-behavior: smooth;
+  /* To take in account the sticky header height while scrolling into a section using a link */
+  scroll-padding: 6.4rem;
 }
 
 body {
@@ -18,6 +43,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  font-size: 1.6rem;
 }
 
 code {
