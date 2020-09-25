@@ -14,6 +14,8 @@ const style = {
   fillOpacity: 0.5
 };
 
+const mapBounds = [[89, 179], [-89, -179]];
+
 function getRank(feature) {
   return feature.properties.name.length;
 }
@@ -37,6 +39,8 @@ function MapContainer() {
       <TileLayer
         url="https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png"
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        noWrap
+        bounds={mapBounds}
       />
       <Choropleth
         data={topology}
