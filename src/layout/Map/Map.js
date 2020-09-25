@@ -9,15 +9,26 @@ import topology from '../../context/countries-50m.json';
 
 const style = {
   fillColor: '#F28F3B',
-  weight: 2,
-  opacity: 1,
-  color: 'white',
-  dashArray: '3',
+  weight: 1,
+  color: 'grey',
   fillOpacity: 0.5
 };
 
 function getRank(feature) {
   return feature.properties.name.length;
+}
+
+function setEventOnEachFeature(feature, layer) {
+  layer.bindTooltip(`${feature.properties.name} <br/> ${getRank(feature)}`);
+  layer.on('mouseover', (e) => {
+    e.target.openTooltip(e.latlng);
+  });
+  layer.on('mouseout', (e) => {
+    e.target.closeTooltip();
+  });
+  layer.on('mousemove', (e) => {
+    e.target.getTooltip().setLatLng(e.latlng);
+  });
 }
 
 function MapContainer() {
@@ -34,7 +45,7 @@ function MapContainer() {
         steps={7}
         mode="e"
         style={style}
-        onEachFeature={(feature, layer) => layer.bindPopup(feature.properties.name)}
+        onEachFeature={(feature, layer) => { setEventOnEachFeature(feature, layer); }}
       />
     </Map>
   );
