@@ -1,8 +1,18 @@
 .OrderableList {
     grid-column: orderableList-start / orderableList-end;
     grid-row: orderableList-start / orderableList-end;
+    background-color: var(--color-background-secondary);
+    border-radius: 10px;
+    padding: 10px;
+}
 
-    background-color: cyan;
+.OrderableListTitle {
+    text-align: center;
+}
+
+.OrderableListDesc {
+    margin: 10px 10px 15px 10px;
+    text-align: center;
 }
 
 .OrderableItem {
@@ -10,14 +20,21 @@
     justify-content: space-between;
     align-items: center;
     user-select: none;
+    border-radius: 10px;
     padding: 10px;
-    margin: 0 0 5px 0;
+    margin: 0 0 15px 0;
+}
+
+.OrderableItemRank {
+    padding: 5px;
+    background-color: var(--color-background-rank);
+    border-radius: 5px;
 }
 
 .NotDragging {
-    background-color: lightgrey;
+    background-color: var(--color-background-tertiary);
 }
 
 .Dragging {
-    background-color: lightsteelblue;
+    background-color: var(--color-background-action);
 }
