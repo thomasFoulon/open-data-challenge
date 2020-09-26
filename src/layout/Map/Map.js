@@ -39,7 +39,7 @@ function MapContainer() {
       id="Map"
       center={[0, 0]}
       zoom={4}
-      maxZoom={8}
+      maxZoom={6}
       minZoom={2}
       maxBounds={mapBounds}
     >
