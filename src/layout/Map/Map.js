@@ -35,7 +35,14 @@ function setEventOnEachFeature(feature, layer) {
 
 function MapContainer() {
   return (
-    <Map id="Map" center={[0, 0]} zoom={4}>
+    <Map
+      id="Map"
+      center={[0, 0]}
+      zoom={4}
+      maxZoom={6}
+      minZoom={2}
+      maxBounds={mapBounds}
+    >
       <TileLayer
         url="https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png"
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
