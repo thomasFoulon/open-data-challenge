@@ -1,6 +1,13 @@
 .Report {
-    grid-row: content-start / content-end;
+  grid-row: content-start / content-end;
 
-    background-color: dodgerblue;
-    min-height: 80.5vh;
+  display: grid;
+  grid-template-columns: [article-start] 75% [article-end sidebar-start] 1fr [sidebar-end];
+  gap: 1.6rem;
+
+  padding-left: 10%;
+  padding-right: 10%;
+  min-height: 80.5vh;
+  position: relative;
+  
 }

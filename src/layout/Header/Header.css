@@ -1,18 +1,18 @@
 .Header {
-    grid-row: header-start / header-end;
-  
-    background-color: var(--color-background-secondary);
-  
-    padding-right: 5%;
-    padding-left: 5%;
-  
-    display: flex;
-    align-items: center;
-    position: sticky;
-    left: 0;
-    top: 0;
-    z-index: 100000;
-  
-    transition: all 0.2s;
-  }
-  
+  grid-row: header-start / header-end;
+
+  background-color: var(--color-background-secondary);
+
+  padding-right: 5%;
+  padding-left: 5%;
+
+  display: flex;
+  align-items: center;
+  position: sticky;
+  left: 0;
+  top: 0;
+  z-index: 100000;
+
+  transition: all 0.2s;
+  border: 1px solid rgba(63, 36, 36, 0.15);
+}
