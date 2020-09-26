@@ -1,5 +1,4 @@
 .Header {
-    grid-column: full-start / full-end;
     grid-row: header-start / header-end;
   
     background-color: var(--color-background-secondary);

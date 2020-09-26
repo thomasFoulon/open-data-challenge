@@ -1,0 +1,6 @@
+.Report {
+    grid-row: content-start / content-end;
+
+    background-color: dodgerblue;
+    min-height: 80.5vh;
+}
