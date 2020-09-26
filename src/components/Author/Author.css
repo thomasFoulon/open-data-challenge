@@ -1,0 +1,56 @@
+.Author {
+    display: flex;
+    
+}
+
+.Author:not(:last-child) {
+    margin-bottom: 1.6rem;
+}
+
+.Author__picture {
+    height: 4.8rem;
+    width: 4.8rem;
+    border-radius: 100%;
+    border: 1Px solid rgba(0,0,0,.15);
+    margin-right: 1.2rem;
+    object-fit: scale-down;
+}
+
+.Author__data {
+    display: flex;
+    flex-direction: column;
+}
+
+.Author__name {
+    font-weight: 500;
+    margin-bottom: 0.4rem;
+}
+
+.enseignant {
+    font-style: italic;
+    font-size: 1.2rem;
+    opacity: 0.4;
+}
+.Author__social-links 
+{
+    list-style: none;
+    display: flex;
+}
+
+.Author__social-links > *:not(:last-child){
+    margin-right: 1.2rem;
+}
+.social__item {
+    height: 3.2rem;
+    transition:all 0.2s;
+}
+
+.social__item:hover {
+    opacity: 0.5;
+    transform: scale(1.2);
+    
+}
+.social__link {
+    color: black;
+}
+
