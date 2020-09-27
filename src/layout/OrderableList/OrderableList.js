@@ -24,7 +24,7 @@ function OrderableItem(item, index) {
           {...provided.dragHandleProps}
         >
           <div className="OrderableItemRank">{index + 1}</div>
-          { item.content }
+          <p className="OrderableItemText">{ item.content }</p>
           <img src={dragIcon} alt="draggable icon" />
         </div>
       )}
@@ -66,7 +66,7 @@ class OrderableList extends Component {
     const { items } = this.state;
     return (
       <div className="OrderableList">
-        <h3 className="OrderableListTitle">Listes des indicateurs</h3>
+        <h3 className="OrderableListTitle">Votre classement des indicateurs</h3>
         <p className="OrderableListDesc">
           Triez ces indicateurs du plus au moins important selon vous pour
           découvrir quels pays offrent les meilleures conditions de vie.
