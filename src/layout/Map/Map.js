@@ -11,10 +11,13 @@ const style = {
   fillColor: '#F28F3B',
   weight: 1,
   color: 'grey',
-  fillOpacity: 0.5
+  fillOpacity: 0.5,
 };
 
-const mapBounds = [[89, 179], [-89, -179]];
+const mapBounds = [
+  [89, 179],
+  [-89, -179],
+];
 
 function getRank(feature) {
   return feature.properties.name.length;
@@ -37,14 +40,14 @@ function MapContainer() {
   return (
     <Map
       id="Map"
-      center={[0, 0]}
-      zoom={4}
+      center={[46.227638, 2.213749]}
+      zoom={2}
       maxZoom={6}
       minZoom={2}
       maxBounds={mapBounds}
     >
       <TileLayer
-        url="https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png"
+        url="https://tiles.stadiamaps.com/tiles/outdoors/{z}/{x}/{y}{r}.png"
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         noWrap
         bounds={mapBounds}
@@ -56,7 +59,9 @@ function MapContainer() {
         steps={7}
         mode="e"
         style={style}
-        onEachFeature={(feature, layer) => { setEventOnEachFeature(feature, layer); }}
+        onEachFeature={(feature, layer) => {
+          setEventOnEachFeature(feature, layer);
+        }}
       />
     </Map>
   );

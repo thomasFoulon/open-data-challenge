@@ -1,4 +1,4 @@
-import { map, filter } from 'lodash';
+import { map, filter, find } from 'lodash';
 
 import transport from '../assets/json/transport_quality.json';
 
@@ -7,7 +7,7 @@ export const fetchCountries = async () => {
     'http://api.worldbank.org/v2/country/?format=json&per_page=350'
   );
   const countries = await response.json();
-  const nameCountries = map(countries[1], ({ name, id }) => [name, id]);
+  const nameCountries = map(countries[1], ({ name, id }) => [id, name]);
 
   return nameCountries;
 };
@@ -60,4 +60,29 @@ export const fetchTransportQualityByCountry = (countryName) => {
   );
 
   return transportByCountry;
+};
+
+export const processData = (
+  countries,
+  gdpAll,
+  homicideAll,
+  literacyAll,
+  healthAll,
+  pollutionAll,
+  unemploymentAll,
+  transportAll
+) => {
+  const processedData = map(countries, ([id, name]) => ({
+    id,
+    name,
+    gdp: find(gdpAll, { countryiso3code: id })?.value,
+    homicide: find(homicideAll, { countryiso3code: id })?.value,
+    literacy: find(literacyAll, { countryiso3code: id })?.value,
+    health: find(healthAll, { countryiso3code: id })?.value,
+    pollution: find(pollutionAll, { countryiso3code: id })?.value,
+    unemployment: find(unemploymentAll, { countryiso3code: id })?.value,
+    transportQuality: find(transportAll, { country: name })?.['2018'],
+  }));
+
+  return processedData;
 };
