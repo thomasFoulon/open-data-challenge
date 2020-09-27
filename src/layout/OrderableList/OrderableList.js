@@ -23,8 +23,8 @@ function OrderableItem(item, index) {
           {...provided.draggableProps}
           {...provided.dragHandleProps}
         >
-          { `${index + 1} - ` }
-          { item.content }
+          <div className="OrderableItemRank">{index + 1}</div>
+          <p className="OrderableItemText">{ item.content }</p>
           <img src={dragIcon} alt="draggable icon" />
         </div>
       )}
@@ -65,20 +65,26 @@ class OrderableList extends Component {
   render() {
     const { items } = this.state;
     return (
-      <DragDropContext onDragEnd={this.onDragEnd}>
-        <Droppable droppableId="droppable">
-          {(provided) => (
-            <div
-              {...provided.droppableProps}
-              ref={provided.innerRef}
-              className="OrderableList"
-            >
-              {items.map((item, index) => (OrderableItem(item, index)))}
-              {provided.placeholder}
-            </div>
-          )}
-        </Droppable>
-      </DragDropContext>
+      <div className="OrderableList">
+        <h3 className="OrderableListTitle">Votre classement des indicateurs</h3>
+        <p className="OrderableListDesc">
+          Triez ces indicateurs du plus au moins important selon vous pour
+          découvrir quels pays offrent les meilleures conditions de vie.
+        </p>
+        <DragDropContext onDragEnd={this.onDragEnd}>
+          <Droppable droppableId="droppable">
+            {(provided) => (
+              <div
+                {...provided.droppableProps}
+                ref={provided.innerRef}
+              >
+                {items.map((item, index) => (OrderableItem(item, index)))}
+                {provided.placeholder}
+              </div>
+            )}
+          </Droppable>
+        </DragDropContext>
+      </div>
     );
   }
 }
