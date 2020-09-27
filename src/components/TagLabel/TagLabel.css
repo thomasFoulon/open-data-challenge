@@ -1,0 +1,34 @@
+.TagLabel {
+  color: white;
+  border-radius: 3px;
+  padding: 0.5rem 0.5rem;
+  font-weight: 500;
+}
+
+.TagLabel--orange {
+  background-color: var(--color-tertiary-orange);
+}
+
+.TagLabel--green {
+  background-color: var(--color-tertiary-green);
+}
+
+.TagLabel--red {
+  background-color: var(--color-tertiary-red);
+}
+
+.TagLabel--purple {
+  background-color: var(--color-tertiary-purple);
+}
+
+.TagLabel--blue {
+  background-color: var(--color-tertiary-blue);
+}
+
+.TagLabel--black {
+  background-color: var(--color-tertiary-black);
+}
+
+.TagLabel__sharp {
+  opacity: 0.5;
+}

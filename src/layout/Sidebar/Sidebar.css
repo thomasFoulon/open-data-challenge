@@ -1,0 +1,30 @@
+.Sidebar {
+  grid-column: sidebar-start/ sidebar-end;
+
+ 
+  align-self: flex-start;
+  position: fixed;
+  right: 10%;
+}
+
+.Sidebar-container {
+  margin-bottom: 1.6rem;
+  border-radius: 3px;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  background-color: var(--color-background-secondary);
+}
+
+
+.Sidebar__header {
+  padding: 0.8rem 1.2rem;
+  font-weight: bold;
+  font-size: 2.0rem;
+  color: var(--color-font);
+  /* background-color: var(--color-tertiary-blue); */
+  border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+}
+
+.Sidebar__content {
+  padding: 1.6rem 1.6rem;
+
+}
