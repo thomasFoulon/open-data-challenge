@@ -1,17 +1,41 @@
 import React, { useState } from 'react';
 
-function CountriesSelection(props) {
-  const { countries, selectedCountryIds, onChange } = props;
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {
+  faCaretDown,
+  faCaretUp,
+  faCheck,
+  faTimes
+} from '@fortawesome/free-solid-svg-icons';
 
-  const [displayedCountries, setDisplayedCountries] = useState(countries);
+import SelectableCountry from '../../components/SelectableCountry/SelectableCountry';
+
+import './CountriesSelection.css';
+
+function hasSomeParentTheClass(element, classname) {
+  if (element === null) return false;
+  if (element.className.split(' ').indexOf(classname) >= 0) return true;
+  return element.parentNode && hasSomeParentTheClass(element.parentNode, classname);
+}
+
+function CountriesSelection(props) {
+  const {
+    countries,
+    selectedCountryIds,
+    onChange
+  } = props;
+
+  const [matchingCountries, setMatchingCountries] = useState(countries);
+  const [displayed, setDisplayed] = useState(false);
 
   const searchCountries = (event) => {
     const searchValue = event.target.value.trim().toLowerCase();
-    const newDisplayedCountries = countries.filter(
+    const newMatchingCountries = countries.filter(
       (item) => item.name.trim().toLowerCase().substr(0, searchValue.length)
         === searchValue
     );
-    setDisplayedCountries(newDisplayedCountries);
+    setMatchingCountries(newMatchingCountries);
+    setDisplayed(newMatchingCountries.length > 0);
   };
 
   const toggleCountry = (countryId) => {
@@ -23,25 +47,63 @@ function CountriesSelection(props) {
     onChange(Array.from(selectedCountryIds));
   };
 
+  const undisplay = (event) => {
+    const focused = event.relatedTarget;
+    if (!hasSomeParentTheClass(focused, 'countriesSelection')) {
+      setDisplayed(false);
+    }
+  };
+
+  let displayedCountriesClassName = 'displayedCountries';
+
+  if (!displayed) {
+    displayedCountriesClassName += ' notDisplayed';
+  }
+
   return (
-    <div className="contriesSelection">
-      <input type="text" onChange={searchCountries} />
-      <ul>
-        {displayedCountries.map((country) => (
-          <li key={country.id}>
-            <input
-              type="checkbox"
-              checked={selectedCountryIds.has(country.id)}
-              onChange={() => toggleCountry(country.id)}
-            />
-            {country.name}
-          </li>
+    <div className="countriesSelection" onBlur={undisplay}>
+      <div className="select">
+        <input type="text" onChange={searchCountries} placeholder="Rechercher un pays..." />
+        <p>
+          (
+          {selectedCountryIds.size}
+          &nbsp;sélectionné
+          {selectedCountryIds.size > 1 ? 's' : ''}
+          )
+        </p>
+        <div className="verticalSeparator" />
+        <button type="button" className="bottomArrowButton" onClick={() => setDisplayed(!displayed)}>
+          <FontAwesomeIcon icon={displayed ? faCaretUp : faCaretDown} size="lg" />
+        </button>
+      </div>
+      <div className="selectionButtons">
+        <button
+          className="blueButton"
+          type="button"
+          onClick={() => onChange(countries.map((country) => country.id))}
+        >
+          <FontAwesomeIcon icon={faCheck} size="lg" />
+          <p>Tout sélectionner</p>
+        </button>
+        <button
+          className="redButton"
+          type="button"
+          onClick={() => onChange([])}
+        >
+          <FontAwesomeIcon icon={faTimes} size="lg" />
+          <p>Tout déselectionner</p>
+        </button>
+      </div>
+      <div className={displayedCountriesClassName}>
+        {matchingCountries.map((country) => (
+          <SelectableCountry
+            key={country.id}
+            country={country}
+            selected={selectedCountryIds.has(country.id)}
+            onChange={() => toggleCountry(country.id)}
+          />
         ))}
-      </ul>
-      <button type="button" onClick={() => onChange(countries.map((country) => country.id))}>
-        Tout sélectionner
-      </button>
-      <button type="button" onClick={() => onChange([])}>Tout déselectionner</button>
+      </div>
     </div>
   );
 }

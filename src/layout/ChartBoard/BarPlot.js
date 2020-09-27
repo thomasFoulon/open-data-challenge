@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { Chart, HorizontalBar } from 'react-chartjs-2';
 
 export default function BarPlot(props) {
-  const { countries } = props;
+  const { countries, className } = props;
   const { color } = Chart.helpers;
 
   const datasets = [{
@@ -24,7 +24,7 @@ export default function BarPlot(props) {
 
   if (countries.length === 0) {
     return (
-      <p style={{ flex: 1, textAlign: 'center' }}>Sélectionnez un pays.</p>
+      <p className={className} style={{ textAlign: 'center' }}>Sélectionnez un pays.</p>
     );
   }
 
@@ -47,11 +47,11 @@ export default function BarPlot(props) {
   };
 
   return (
-    <div style={{ backgroundColor: 'white', flex: 1, margin: 50 }}>
+    <div className={className} style={{ backgroundColor: 'white' }}>
       <div className="indicatorSelector">
         <select value={currentDataset} onChange={handleChange}>
           {datasets.map(
-            (dataset, index) => (<option value={index}>{dataset.label}</option>)
+            (dataset, index) => (<option key={dataset.label} value={index}>{dataset.label}</option>)
           )}
         </select>
       </div>

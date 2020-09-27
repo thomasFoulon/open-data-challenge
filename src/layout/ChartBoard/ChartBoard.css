@@ -2,15 +2,11 @@
   grid-column: full-start / full-end;
   grid-row: chartBoard-start / chartBoard-end;
 
-  background-color: hotpink;
+  background-color: white;
   flex-direction: row;
   display: flex;
 }
 
-.countriesSelection {
-  flex: 1;
-}
-
-.temporarySelectedCountries {
-  flex: 1;
+.chart {
+  flex: 2;
 }

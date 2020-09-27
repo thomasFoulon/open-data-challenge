@@ -30,6 +30,30 @@ function ChartBoard() {
     },
     {
       id: 'h', name: 'Japon', gdp: 32, transport: 3
+    },
+    {
+      id: 'i', name: 'Russie', gdp: 351, transport: 34
+    },
+    {
+      id: 'j', name: 'Egypte', gdp: 1542, transport: 56
+    },
+    {
+      id: 'k', name: 'Inde', gdp: 657, transport: 20
+    },
+    {
+      id: 'l', name: 'Pérou', gdp: 210, transport: 86
+    },
+    {
+      id: 'm', name: 'Vénézuela', gdp: 124, transport: 200
+    },
+    {
+      id: 'n', name: 'Ethiopie', gdp: 40, transport: 25
+    },
+    {
+      id: 'o', name: 'Belgique', gdp: 1309, transport: 78
+    },
+    {
+      id: 'p', name: 'Luxembourg', gdp: 32, transport: 3
     }
   ];
 
@@ -37,12 +61,11 @@ function ChartBoard() {
   return (
     <div id="ChartBoard" className="ChartBoard">
       <CountriesSelection
-        className="countriesSelection"
         countries={countries}
         selectedCountryIds={selectedCountryIds}
         onChange={(selectedIds) => setSelectedCountryIds(new Set(selectedIds))}
       />
-      <BarPlot countries={selectedCountries} />
+      <BarPlot className="chart" countries={selectedCountries} />
     </div>
   );
 }
