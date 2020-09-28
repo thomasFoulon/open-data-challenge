@@ -13,7 +13,7 @@
 }
 
 .ChartBoard > .selection > .countriesSelection {
-  flex: 1;
+  flex: 2;
 }
 
 .ChartBoard > .selection > .indicatorSelector {

@@ -81,6 +81,7 @@ function CountriesSelection(props) {
         <button
           className="blueButton"
           type="button"
+          title="Tout sélectionner"
           onClick={() => onChange(countries.map((country) => country.id))}
         >
           <FontAwesomeIcon icon={faCheck} size="lg" />
@@ -89,10 +90,11 @@ function CountriesSelection(props) {
         <button
           className="redButton"
           type="button"
+          title="Tout désélectionner"
           onClick={() => onChange([])}
         >
           <FontAwesomeIcon icon={faTimes} size="lg" />
-          <p>Tout déselectionner</p>
+          <p>Tout désélectionner</p>
         </button>
       </div>
       <div className={displayedCountriesClassName}>
