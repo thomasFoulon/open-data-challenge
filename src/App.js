@@ -13,6 +13,8 @@ import Report from './pages/Report/Report';
 import Main from './pages/Main/Main';
 import Footer from './layout/Footer/Footer';
 
+import Spinner from './components/Spinner/Spinner';
+
 import './App.css';
 
 function App() {
@@ -42,10 +44,6 @@ function App() {
     fetchData();
   }, []);
 
-  if (isLoading) {
-    return <div>Loading</div>;
-  }
-
   const processedData = processData(
     countries,
     gdpAll,
@@ -61,14 +59,16 @@ function App() {
     <Router>
       <div className="App">
         <Header />
-        <Switch>
-          <Route exact path="/">
-            <Main processedData={processedData} />
-          </Route>
-          <Route path="/report">
-            <Report />
-          </Route>
-        </Switch>
+        {isLoading ? <Spinner /> : (
+          <Switch>
+            <Route exact path="/">
+              <Main processedData={processedData} />
+            </Route>
+            <Route path="/report">
+              <Report />
+            </Route>
+          </Switch>
+        )}
         <Footer />
       </div>
     </Router>
