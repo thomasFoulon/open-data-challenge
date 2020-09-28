@@ -2,27 +2,31 @@
     grid-column: orderableList-start / orderableList-end;
     grid-row: orderableList-start / orderableList-end;
     background-color: var(--color-background-secondary);
-    border-radius: 10px;
-    padding: 10px;
+    border-radius: 3px;
+    border: 1px solid rgba(0,0,0,0.15);
 }
 
 .OrderableListTitle {
-    text-align: center;
+    border-bottom: 1px solid rgba(0,0,0,0.15);
+    padding: 1.6rem;
+    font-weight: bold;
+    font-size: 2.4rem;
 }
 
 .OrderableListDesc {
-    margin: 10px 10px 15px 10px;
-    text-align: center;
+    margin: 1rem 1.6rem; 
+    margin-bottom: 2.4rem;
 }
 
 .OrderableItem {
     display: flex;
-    justify-content: space-between;
     align-items: center;
     user-select: none;
-    border-radius: 10px;
-    padding: 5px 10px 5px 10px;
+    border-radius: 3px;
+    padding: 1.2rem;
     margin: 0 0 10px 0;
+    margin-right: 1.6rem;
+    margin-left: 1.6rem;
 }
 
 .OrderableItemText {
@@ -31,9 +35,9 @@
 }
 
 .OrderableItemRank {
-    padding: 5px;
     background-color: var(--color-background-rank);
-    border-radius: 5px;
+    padding: 0.5rem;
+    border-radius: 3px;
 }
 
 .NotDragging {
@@ -42,4 +46,9 @@
 
 .Dragging {
     background-color: var(--color-background-action);
+}
+
+.OrderableItemIcon {
+    margin-left: auto;
+    opacity: 0.3;
 }
