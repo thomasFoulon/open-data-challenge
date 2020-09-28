@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import { DragDropContext, Draggable, Droppable } from 'react-beautiful-dnd';
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowsAlt } from '@fortawesome/free-solid-svg-icons';
+
 import './OrderableList.css';
 
 const reorder = (list, srcIndex, destIndex) => {
@@ -10,8 +13,6 @@ const reorder = (list, srcIndex, destIndex) => {
 
   return result;
 };
-
-const dragIcon = require('../../assets/dragIcon.png');
 
 function OrderableItem(item, index) {
   return (
@@ -25,7 +26,7 @@ function OrderableItem(item, index) {
         >
           <div className="OrderableItemRank">{index + 1}</div>
           <p className="OrderableItemText">{ item.content }</p>
-          <img src={dragIcon} alt="draggable icon" />
+          <FontAwesomeIcon className="OrderableItemIcon" icon={faArrowsAlt} size="lg" />
         </div>
       )}
     </Draggable>
