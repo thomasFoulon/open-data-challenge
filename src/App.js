@@ -16,6 +16,7 @@ import Footer from './layout/Footer/Footer';
 import './App.css';
 
 function App() {
+  const [isLoading, setIsLoading] = useState(true);
   const [countries, setCountries] = useState([]);
   const [gdpAll, setGdpAll] = useState([]);
   const [homicideAll, setHomicideAll] = useState([]);
@@ -34,11 +35,16 @@ function App() {
     setPollutionAll(await fetchIndicatorAllCountries('pollution'));
     setUnemploymentAll(await fetchIndicatorAllCountries('unemployment'));
     setTransportAll(await fetchTransportQualityAllCountries());
+    setIsLoading(false);
   };
 
   useEffect(() => {
     fetchData();
   }, []);
+
+  if (isLoading) {
+    return <div>Loading</div>;
+  }
 
   const processedData = processData(
     countries,
