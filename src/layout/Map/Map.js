@@ -55,6 +55,10 @@ function MapContainer(props) {
       maxZoom={6}
       minZoom={2}
       maxBounds={mapBounds}
+      style={{
+        borderRadius: '3px',
+        border: '1px solid rgba(0,0,0,0.15)'
+      }}
     >
       <TileLayer
         url="https://tiles.stadiamaps.com/tiles/outdoors/{z}/{x}/{y}{r}.png"
