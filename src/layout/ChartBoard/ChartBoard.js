@@ -91,7 +91,9 @@ function ChartBoard() {
         <div className="indicatorSelector">
           <select value={currentDatasetId} onChange={handleChange}>
             {datasets.map(
-              (dataset, index) => (<option key={dataset.label} value={index}>{dataset.label}</option>)
+              (dataset, index) => (
+                <option key={dataset.label} value={index}>{dataset.label}</option>
+              )
             )}
           </select>
         </div>
