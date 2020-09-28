@@ -1,16 +1,27 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { map } from 'lodash';
 import MapContainer from '../../layout/Map/Map';
 import OrderableList from '../../layout/OrderableList/OrderableList';
 import ChartBoard from '../../layout/ChartBoard/ChartBoard';
 
 import './Main.css';
 
+function getScore(processedData) {
+  const scores = map(processedData, (country) => ({
+    id: country.id,
+    name: country.name,
+    score: country.gdp + country.homicide + country.literacy + country.health + country.pollution + country.unemployment + country.transportQuality,
+  }));
+  return scores;
+}
+
 function Main(props) {
   const { processedData } = props;
+  const [scores, setScores] = useState(getScore(processedData));
 
   return (
     <div className="Main">
-      <MapContainer />
+      <MapContainer scores={scores} />
       <OrderableList
         processedData={processedData}
         items={[

@@ -19,12 +19,21 @@ const mapBounds = [
   [-89, -179],
 ];
 
-function getRank(feature) {
-  return feature.properties.name.length;
+function getRank(country, scores) {
+  const currentScore = scores.find(
+    (element) => element.id === country.id || element.name === country.properties.name
+  );
+  if (currentScore === undefined || currentScore.score === undefined) {
+    return 0;
+  }
+  if (Number.isNaN(currentScore.score)) {
+    return 0;
+  }
+  return currentScore.score;
 }
 
-function setEventOnEachFeature(feature, layer) {
-  layer.bindTooltip(`${feature.properties.name} <br/> ${getRank(feature)}`);
+function setEventOnEachFeature(country, layer, scores) {
+  layer.bindTooltip(`${country.properties.name} <br/> ${getRank(country, scores)}`);
   layer.on('mouseover', (e) => {
     e.target.openTooltip(e.latlng);
   });
@@ -36,7 +45,8 @@ function setEventOnEachFeature(feature, layer) {
   });
 }
 
-function MapContainer() {
+function MapContainer(props) {
+  const { scores } = props;
   return (
     <Map
       id="Map"
@@ -54,13 +64,13 @@ function MapContainer() {
       />
       <Choropleth
         data={topology}
-        valueProperty={(feature) => getRank(feature)}
+        valueProperty={(country) => getRank(country, scores)}
         scale={['#b3cde0', '#011f4b']}
         steps={7}
         mode="e"
         style={style}
-        onEachFeature={(feature, layer) => {
-          setEventOnEachFeature(feature, layer);
+        onEachFeature={(country, layer) => {
+          setEventOnEachFeature(country, layer, scores);
         }}
       />
     </Map>
