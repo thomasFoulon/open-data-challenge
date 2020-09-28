@@ -2,15 +2,36 @@
   grid-column: full-start / full-end;
   grid-row: chartBoard-start / chartBoard-end;
 
-  background-color: hotpink;
-  flex-direction: row;
+  background-color: white;
   display: flex;
+  flex-direction: column;
 }
 
-.countriesSelection {
-  flex: 1;
+.ChartBoard > .selection {
+  display: flex;
+  flex-direction: row;
 }
 
-.temporarySelectedCountries {
+.ChartBoard > .selection > .countriesSelection {
+  flex: 2;
+}
+
+.ChartBoard > .selection > .indicatorSelector {
   flex: 1;
+  margin-top: 20px;
+}
+
+.ChartBoard > .selection > .indicatorSelector > select {
+  height: 40px;
+  width: 80%;
+}
+
+.ChartBoard > .chart {
+  width: 80%;
+  height: 100%;
+  margin: auto;
+}
+
+.ChartBoard > p.chart {
+  text-align: center;
 }
