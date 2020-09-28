@@ -5,7 +5,6 @@
     margin-bottom: 10px;
     position: relative;
     margin-left: 2%;
-    flex-wrap: wrap;
   }
   
   .countriesSelection > .select {
@@ -54,6 +53,7 @@
     border: solid 1px grey;
     border-radius: 5px;
     width: 80%;
+    max-height: 70vh;
     overflow: hidden;
     overflow-y: auto;
     position: absolute;
