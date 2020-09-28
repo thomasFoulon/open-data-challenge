@@ -32,8 +32,8 @@ function getRank(country, scores) {
   return currentScore.score;
 }
 
-function setEventOnEachFeature(country, layer, scores) {
-  layer.bindTooltip(`${country.properties.name} <br/> ${getRank(country, scores)}`);
+function setEventOnEachFeature(country, layer) {
+  layer.bindTooltip(`${country.properties.name}`);
   layer.on('mouseover', (e) => {
     e.target.openTooltip(e.latlng);
   });
