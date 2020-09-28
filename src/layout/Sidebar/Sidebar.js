@@ -29,6 +29,7 @@ function Sidebar() {
             />
             <Author name="Thomas FOULON" />
             <Author name="Anne GAISNE" />
+            <Author name="Oussama ALLALI" />
           </div>
         </div>
       </div>

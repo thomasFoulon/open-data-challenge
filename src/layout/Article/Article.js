@@ -23,12 +23,31 @@ function Article() {
         </h2>
 
         <p className="section__text">
-          Sit et ea ad pariatur fugiat dolor do amet anim. Lorem
-          incididunt tempor magna duis eiusmod qui pariatur cupidatat sint
-          ex veniam nostrud. Elit cupidatat exercitation Lorem minim laborum
-          dolor ea duis excepteur laborum. Do eiusmod esse ipsum non eiusmod
-          excepteur duis exercitation. Ipsum nulla id id pariatur do anim id.
-          Sunt tempor magna dolore eu nulla mollit anim.
+          Le
+          {' '}
+          <strong>challenge Open Data</strong>
+          {' '}
+          est un projet d&apos;une semaine qui propose de réunir tout
+          les éléments nécessaires pour la construction d&apos;une application de visualisation
+          de données intéractive. Au delà de la réalisation technique, l&apos;acquisition de bonnes
+          sources de données et leur représentation visuelles de façon ergonomique s&apos;avèrent
+          primordiales.
+
+        </p>
+      </div>
+
+      <div className="Article__section">
+        <h2 className="section__title">
+          Objectif
+        </h2>
+
+        <p className="section__text">
+          L&apos;objectif de notre visualisation était de répondre à la question suivante :
+          <strong> Quel est le pays qui offre les meilleurs conditions de vie ?</strong>
+          {' '}
+          Pour ce faire,
+          nous nous sommes basées sur un ensemble d&apos;indicateurs sociales et économiques qui
+          selon nous sont les plus pertinents.
         </p>
       </div>
 
@@ -38,77 +57,71 @@ function Article() {
         </h2>
 
         <p className="section__text">
-          Sit et ea ad pariatur fugiat dolor do amet anim. Lorem
-          incididunt tempor magna duis eiusmod qui pariatur cupidatat sint
-          ex veniam nostrud. Elit cupidatat exercitation Lorem minim laborum
-          dolor ea duis excepteur laborum. Do eiusmod esse ipsum non eiusmod
-          excepteur duis exercitation. Ipsum nulla id id pariatur do anim id.
-          Sunt tempor magna dolore eu nulla mollit anim.
-        </p>
-        <p className="section__text">
-          Sit et ea ad pariatur fugiat dolor do amet anim. Lorem
-          incididunt tempor magna duis eiusmod qui pariatur cupidatat sint
-          ex veniam nostrud. Elit cupidatat exercitation Lorem minim laborum
-          dolor ea duis excepteur laborum. Do eiusmod esse ipsum non eiusmod
-          excepteur duis exercitation. Ipsum nulla id id pariatur do anim id.
-          Sunt tempor magna dolore eu nulla mollit anim.
-        </p>
-      </div>
-
-      <div className="Article__section">
-        <h2 className="section__title">
-          Traitement de données
-        </h2>
-
-        <p className="section__text">
-          Sit et ea ad pariatur fugiat dolor do amet anim. Lorem
-          incididunt tempor magna duis eiusmod qui pariatur cupidatat sint
-          ex veniam nostrud. Elit cupidatat exercitation Lorem minim laborum
-          dolor ea duis excepteur laborum. Do eiusmod esse ipsum non eiusmod
-          excepteur duis exercitation. Ipsum nulla id id pariatur do anim id.
-          Sunt tempor magna dolore eu nulla mollit anim.
+          Pour pouvoir comparer les différents pays du monde nous nous sommes basés sur
+          les indicateurs suivants :
+          <ul className="section__list">
+            <li>PIB par habitant</li>
+            <li>Taux de criminalité</li>
+            <li>Qualité de transport</li>
+            <li>Qualité de l&apos;éducation</li>
+            <li>Taux de chômage</li>
+            <li>Qualité de service de santé</li>
+            <li>Pollution</li>
+          </ul>
+          Ces différents jeux de données proviennent principalement de
+          {' '}
+          <a className="section__link" href="https://data.worldbank.org/">World Bank Data</a>
+          {' '}
+          et de
+          {' '}
+          <a className="section__link" href="https://www.gapminder.org/">Gapminder</a>
+          .
         </p>
       </div>
 
       <div className="Article__section">
         <h2 className="section__title">
-          Architecture
+          Outils utilisés
         </h2>
-
         <p className="section__text">
-          Sit et ea ad pariatur fugiat dolor do amet anim. Lorem
-          incididunt tempor magna duis eiusmod qui pariatur cupidatat sint
-          ex veniam nostrud. Elit cupidatat exercitation Lorem minim laborum
-          dolor ea duis excepteur laborum. Do eiusmod esse ipsum non eiusmod
-          excepteur duis exercitation. Ipsum nulla id id pariatur do anim id.
-          Sunt tempor magna dolore eu nulla mollit anim.
-          dolor ea duis excepteur laborum. Do eiusmod esse ipsum non eiusmod
-          excepteur duis exercitation. Ipsum nulla id id pariatur do anim id.
-          Sunt tempor magna dolore eu nulla mollit anim.
-          dolor ea duis excepteur laborum. Do eiusmod esse ipsum non eiusmod
-          excepteur duis exercitation. Ipsum nulla id id pariatur do anim id.
-          Sunt tempor magna dolore eu nulla mollit anim.
-          dolor ea duis excepteur laborum. Do eiusmod esse ipsum non eiusmod
-          excepteur duis exercitation. Ipsum nulla id id pariatur do anim id.
-          Sunt tempor magna dolore eu nulla mollit anim.
-        </p>
-      </div>
+          Pour la création de cette application on a fait appel à plusieurs outils qui sont :
+          <ul className="section__list">
+            <li>
+              ReactJs:
+              {' '}
+              <span className="section_def">
+                Une bibliothèque JavaScript pour la création d&apos;
+                interface de site web.
 
-      <div className="Article__section">
-        <h2 className="section__title">
-          Librairie
-        </h2>
+              </span>
+            </li>
+            <li>
+              Leaflet:
+              {' '}
+              <span className="section_def">
+                est une bibliothèque JavaScript open-source moderne permettant l&apos;intégration de
+                cartes interactives.
+                {' '}
+              </span>
 
-        <p className="section__text">
-          Sit et ea ad pariatur fugiat dolor do amet anim. Lorem
-          incididunt tempor magna duis eiusmod qui pariatur cupidatat sint
-          ex veniam nostrud. Elit cupidatat exercitation Lorem minim laborum
-          dolor ea duis excepteur laborum. Do eiusmod esse ipsum non eiusmod
-          excepteur duis exercitation. Ipsum nulla id id pariatur do anim id.
-          Sunt tempor magna dolore eu nulla mollit anim.
-          Do eiusmod esse ipsum non eiusmod
-          excepteur duis exercitation. Ipsum nulla id id pariatur do anim id.
-          Sunt tempor magna dolore eu nulla mollit anim.
+            </li>
+            <li>
+              ChartJs:
+              {' '}
+              <span className="section_def">
+                Un module qui nous a permis d&apos;intégrer des
+                graphiques interactifs de façon efficace.
+
+              </span>
+            </li>
+
+            <li>
+              Github/Git:
+              {' '}
+              <span className="section_def">Nous avons utilisé ces outils de source </span>
+            </li>
+
+          </ul>
         </p>
       </div>
 
@@ -122,6 +135,20 @@ function Article() {
           incididunt tempor magna duis eiusmod qui pariatur cupidatat sint
           ex veniam nostrud. Elit cupidatat exercitation Lorem minim laborum
 
+        </p>
+      </div>
+
+      <div className="Article__section">
+        <h2 className="section__title">
+          Bibliographie
+        </h2>
+
+        <p className="section__text">
+          <div><a className="section__link" href="https://data.worldbank.org/" target="_blank" rel="noreferrer">World Bank Data</a></div>
+          <div><a className="section__link" href="https://www.gapminder.org/" target="_blank" rel="noreferrer">Gapminder</a></div>
+          <div><a className="section__link" href="https://reactjs.org/" target="_blank" rel="noreferrer">React</a></div>
+          <div><a className="section__link" href="https://leafletjs.com/" target="_blank" rel="noreferrer">Leaflet</a></div>
+          <div><a className="section__link" href="https://www.chartjs.org/" target="_blank" rel="noreferrer">ChartJS</a></div>
         </p>
       </div>
     </div>
