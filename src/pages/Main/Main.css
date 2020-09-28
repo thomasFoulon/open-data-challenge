@@ -3,7 +3,7 @@
   display: grid;
 
   grid-template-columns: [full-start orderableList-start ] 30% [orderableList-end map-start] 1fr [map-end full-end];
-  grid-template-rows: [map-start orderableList-start] 90vh [ orderableList-end map-end chartBoard-start] 100vh [chartBoard-end];
+  grid-template-rows: [map-start orderableList-start] 90vh [ orderableList-end map-end chartBoard-start] 90vh [chartBoard-end];
   gap: 1.6rem;
   
   padding-left: 1.6rem;

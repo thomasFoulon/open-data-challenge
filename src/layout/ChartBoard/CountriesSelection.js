@@ -13,7 +13,8 @@ import SelectableCountry from '../../components/SelectableCountry/SelectableCoun
 import './CountriesSelection.css';
 
 function hasSomeParentTheClass(element, classname) {
-  if (element === null) return false;
+  if (element === null || element === undefined) return false;
+  if (element.className === null || element.className === undefined) return false;
   if (element.className.split(' ').indexOf(classname) >= 0) return true;
   return element.parentNode && hasSomeParentTheClass(element.parentNode, classname);
 }

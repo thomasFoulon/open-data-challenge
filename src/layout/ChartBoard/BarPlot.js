@@ -1,64 +1,41 @@
-import React, { useState } from 'react';
+import React from 'react';
 
-import { Chart, HorizontalBar } from 'react-chartjs-2';
+import { HorizontalBar } from 'react-chartjs-2';
 
 export default function BarPlot(props) {
-  const { countries, className } = props;
-  const { color } = Chart.helpers;
-
-  const datasets = [{
-    label: 'PIB/hab',
-    property: 'gdp',
-    backgroundColor: color('red').alpha(0.5).rgbString(),
-    borderColor: 'red',
-    borderWidth: 1
-  }, {
-    label: 'Qualité des transports',
-    property: 'transport',
-    backgroundColor: color('blue').alpha(0.5).rgbString(),
-    borderColor: 'blue',
-    borderWidth: 1
-  }];
-
-  const [currentDataset, setCurrentDataset] = useState(0);
+  const {
+    countries,
+    datasets,
+    datasetId
+  } = props;
 
   if (countries.length === 0) {
     return (
-      <p className={className} style={{ textAlign: 'center' }}>Sélectionnez un pays.</p>
+      <p className="chart">Sélectionnez un pays.</p>
     );
   }
 
   const sortedCountries = countries.sort(
-    (country1, country2) => country1[datasets[currentDataset].property]
-      < country2[datasets[currentDataset].property]
+    (country1, country2) => country1[datasets[datasetId].property]
+      < country2[datasets[datasetId].property]
   );
 
-  datasets[currentDataset].data = sortedCountries.map(
-    (country) => country[datasets[currentDataset].property]
+  datasets[datasetId].data = sortedCountries.map(
+    (country) => country[datasets[datasetId].property]
   );
 
   const barChartData = {
     labels: sortedCountries.map((country) => country.name),
-    datasets: [datasets[currentDataset]]
-  };
-
-  const handleChange = (event) => {
-    setCurrentDataset(event.target.value);
+    datasets: [datasets[datasetId]]
   };
 
   return (
-    <div className={className} style={{ backgroundColor: 'white' }}>
-      <div className="indicatorSelector">
-        <select value={currentDataset} onChange={handleChange}>
-          {datasets.map(
-            (dataset, index) => (<option key={dataset.label} value={index}>{dataset.label}</option>)
-          )}
-        </select>
-      </div>
+    <div className="chart">
       <HorizontalBar
         data={barChartData}
         options={{
           responsive: true,
+          maintainAspectRatio: false,
           legend: {
             position: 'top',
           },

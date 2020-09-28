@@ -3,10 +3,35 @@
   grid-row: chartBoard-start / chartBoard-end;
 
   background-color: white;
-  flex-direction: row;
   display: flex;
+  flex-direction: column;
 }
 
-.chart {
-  flex: 2;
+.ChartBoard > .selection {
+  display: flex;
+  flex-direction: row;
+}
+
+.ChartBoard > .selection > .countriesSelection {
+  flex: 1;
+}
+
+.ChartBoard > .selection > .indicatorSelector {
+  flex: 1;
+  margin-top: 20px;
+}
+
+.ChartBoard > .selection > .indicatorSelector > select {
+  height: 40px;
+  width: 80%;
+}
+
+.ChartBoard > .chart {
+  width: 80%;
+  height: 100%;
+  margin: auto;
+}
+
+.ChartBoard > p.chart {
+  text-align: center;
 }

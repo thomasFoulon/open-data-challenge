@@ -1,11 +1,15 @@
 import React, { useState } from 'react';
 
+import { Chart } from 'react-chartjs-2';
+
 import './ChartBoard.css';
 import CountriesSelection from './CountriesSelection';
 import BarPlot from './BarPlot';
 
 function ChartBoard() {
   const [selectedCountryIds, setSelectedCountryIds] = useState(new Set());
+  const [currentDatasetId, setCurrentDatasetId] = useState(0);
+  const { color } = Chart.helpers;
   const countries = [
     {
       id: 'a', name: 'France', gdp: 351, transport: 34
@@ -57,15 +61,42 @@ function ChartBoard() {
     }
   ];
 
+  const datasets = [{
+    label: 'PIB/hab',
+    property: 'gdp',
+    backgroundColor: color('red').alpha(0.5).rgbString(),
+    borderColor: 'red',
+    borderWidth: 1
+  }, {
+    label: 'Qualité des transports',
+    property: 'transport',
+    backgroundColor: color('blue').alpha(0.5).rgbString(),
+    borderColor: 'blue',
+    borderWidth: 1
+  }];
+
+  const handleChange = (event) => {
+    setCurrentDatasetId(event.target.value);
+  };
+
   const selectedCountries = countries.filter((country) => selectedCountryIds.has(country.id));
   return (
     <div id="ChartBoard" className="ChartBoard">
-      <CountriesSelection
-        countries={countries}
-        selectedCountryIds={selectedCountryIds}
-        onChange={(selectedIds) => setSelectedCountryIds(new Set(selectedIds))}
-      />
-      <BarPlot className="chart" countries={selectedCountries} />
+      <div className="selection">
+        <CountriesSelection
+          countries={countries}
+          selectedCountryIds={selectedCountryIds}
+          onChange={(selectedIds) => setSelectedCountryIds(new Set(selectedIds))}
+        />
+        <div className="indicatorSelector">
+          <select value={currentDatasetId} onChange={handleChange}>
+            {datasets.map(
+              (dataset, index) => (<option key={dataset.label} value={index}>{dataset.label}</option>)
+            )}
+          </select>
+        </div>
+      </div>
+      <BarPlot datasets={datasets} datasetId={currentDatasetId} countries={selectedCountries} />
     </div>
   );
 }
