@@ -60,13 +60,55 @@ function Article() {
           Pour pouvoir comparer les différents pays du monde nous nous sommes basés sur
           les indicateurs suivants :
           <ul className="section__list">
-            <li>PIB par habitant</li>
-            <li>Taux de criminalité</li>
-            <li>Qualité de transport</li>
-            <li>Qualité de l&apos;éducation</li>
-            <li>Taux de chômage</li>
-            <li>Qualité de service de santé</li>
-            <li>Pollution</li>
+            <li>
+              PIB par habitant:
+              {' '}
+              <span className="section_def">
+                en dollars
+              </span>
+            </li>
+            <li>
+              Taux de criminalité:
+              {' '}
+              <span className="section_def">
+                Nombre d&apos;homicides volontaires pour 100.000 personnes
+              </span>
+            </li>
+            <li>
+              Qualité de transport:
+              {' '}
+              <span className="section_def">
+                Qualité des infrastructures de transport et de logistique sur une échelle de 1 à 5
+              </span>
+            </li>
+            <li>
+              Qualité de l&apos;éducation:
+              {' '}
+              <span className="section_def">
+                Taux d&apos;alphabétisation en % de la population agée de plus de 15 ans
+              </span>
+            </li>
+            <li>
+              Taux de chômage:
+              {' '}
+              <span className="section_def">
+                En % de la force de travail totale
+              </span>
+            </li>
+            <li>
+              Qualité de service de santé:
+              {' '}
+              <span className="section_def">
+                Dépenses pour la santé par habitant en dollars
+              </span>
+            </li>
+            <li>
+              Pollution:
+              {' '}
+              <span className="section_def">
+                Emissions de CO2 en tonnes par habitant
+              </span>
+            </li>
           </ul>
           Ces différents jeux de données proviennent principalement de
           {' '}
