@@ -52,7 +52,7 @@ function MapContainer(props) {
       id="Map"
       center={[46.227638, 2.213749]}
       zoom={2}
-      maxZoom={6}
+      maxZoom={10}
       minZoom={2}
       maxBounds={mapBounds}
     >
@@ -70,7 +70,7 @@ function MapContainer(props) {
         mode="e"
         style={style}
         onEachFeature={(country, layer) => {
-          setEventOnEachFeature(country, layer, scores);
+          setEventOnEachFeature(country, layer);
         }}
       />
     </Map>
