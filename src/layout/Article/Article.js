@@ -1,6 +1,8 @@
 import React from 'react';
 import TagLabel from '../../components/TagLabel/TagLabel';
 
+import archi from '../../assets/COD_architecture.png';
+
 import './Article.css';
 
 function Article() {
@@ -25,12 +27,12 @@ function Article() {
         <p className="section__text">
           Le
           {' '}
-          <strong>challenge Open Data</strong>
+          <strong>Challenge Open Data</strong>
           {' '}
-          est un projet d&apos;une semaine qui propose de réunir tout
+          est un projet d&apos;une semaine qui propose de réunir tous
           les éléments nécessaires pour la construction d&apos;une application de visualisation
           de données intéractive. Au delà de la réalisation technique, l&apos;acquisition de bonnes
-          sources de données et leur représentation visuelles de façon ergonomique s&apos;avèrent
+          sources de données et leur représentation visuelle de façon ergonomique s&apos;avèrent
           primordiales.
 
         </p>
@@ -43,10 +45,10 @@ function Article() {
 
         <p className="section__text">
           L&apos;objectif de notre visualisation était de répondre à la question suivante :
-          <strong> Quel est le pays qui offre les meilleurs conditions de vie ?</strong>
+          <strong> Quel est le pays qui offre les meilleures conditions de vie ?</strong>
           {' '}
           Pour ce faire,
-          nous nous sommes basées sur un ensemble d&apos;indicateurs sociales et économiques qui
+          nous nous sommes basés sur un ensemble d&apos;indicateurs sociaux et économiques qui
           selon nous sont les plus pertinents.
         </p>
       </div>
@@ -57,7 +59,7 @@ function Article() {
         </h2>
 
         <p className="section__text">
-          Pour pouvoir comparer les différents pays du monde nous nous sommes basés sur
+          Pour pouvoir comparer les différents pays du monde, nous nous sommes basés sur
           les indicateurs suivants :
           <ul className="section__list">
             <li>
@@ -129,26 +131,25 @@ function Article() {
           Pour la création de cette application on a fait appel à plusieurs outils qui sont :
           <ul className="section__list">
             <li>
-              ReactJs:
+              ReactJs :
               {' '}
               <span className="section_def">
-                Une bibliothèque JavaScript pour la création d&apos;
-                interface de site web.
+                Une bibliothèque JavaScript pour la création d&apos;interface de site web dynamique.
 
               </span>
             </li>
             <li>
-              Leaflet:
+              Leaflet :
               {' '}
               <span className="section_def">
-                est une bibliothèque JavaScript open-source moderne permettant l&apos;intégration de
+                Une bibliothèque JavaScript open-source moderne permettant l&apos;intégration de
                 cartes interactives.
                 {' '}
               </span>
 
             </li>
             <li>
-              ChartJs:
+              ChartJs :
               {' '}
               <span className="section_def">
                 Un module qui nous a permis d&apos;intégrer des
@@ -158,13 +159,110 @@ function Article() {
             </li>
 
             <li>
-              Github/Git:
+              Github/Git :
               {' '}
-              <span className="section_def">Nous avons utilisé ces outils de source </span>
+              <span className="section_def">Nous avons utilisé ces outils pour la gestion de versions de notre projet à la fois au niveau local et distant. </span>
             </li>
 
           </ul>
         </p>
+      </div>
+
+      <div className="Article__section">
+        <h2 className="section__title">
+          Architecture du projet
+        </h2>
+
+        <img src={archi} alt="architecture" className="img-archi" />
+
+        <p className="section__text">
+          Notre projet a été premièrement bootstrap avec le module npm
+          {' '}
+          <strong>create-react-app</strong>
+          , ensuite, nous l&apos;avons réparti en plusieurs dossiers et sous dossiers
+          pour maintenir une bonne organisation et faciliter ainsi l&apos;implémentation
+          de chaque fonctionnalité.
+        </p>
+
+        <p>
+          En effet, dans le dossier
+          <strong> src</strong>
+          , nous avons plusieurs sous-dossiers, notamment :
+          <ul className="section__list">
+            <li>
+              <string>api</string>
+              <span className="section_def">
+                {' '}
+                qui regroupe toutes les requêtes HTTP vers World Bank, en plus des fonctions de
+                traitements de données.
+                {' '}
+              </span>
+            </li>
+            <li>
+              <string>assets</string>
+              <span className="section_def">
+                {' '}
+                qui regroupe toutes les images, icônes et des données JSON sur la qualité du
+                transport récoltées sur Gapminder.
+                {' '}
+              </span>
+            </li>
+            <li>
+              <string>components</string>
+              <span className="section_def">
+                {' '}
+                qui regroupe certains composants importants pour organiser le code et permettre
+                la réutilisabilité de blocs de code.
+                {' '}
+              </span>
+            </li>
+            <li>
+              <string>layout & pages</string>
+              <span className="section_def">
+                {' '}
+                qui regroupent les différentes pages et sections de l&apos;interface de
+                notre projet, par exemple : la map, le graphique et le rapport.
+                {' '}
+              </span>
+            </li>
+          </ul>
+        </p>
+
+        <p className="section__text">
+          En ce qui concerne les données adoptées, nous avons utilisé l&apos;API de World Bank
+          pour récupérer les valeurs de 6 indicateurs pour tous les pays.
+          Cependant, n&apos;ayant pas trouvé l&apos;indicateur
+          {' '}
+          <strong>Qualité de transport</strong>
+          , nous avons opté cette fois-ci pour Gapminder, où nous avons trouvé
+          les données en csv et que nous avons converties en JSON pour tout uniformiser.
+        </p>
+
+      </div>
+      <div className="Article__section">
+        <h2 className="section__title">
+          Traitement de données
+        </h2>
+        <p className="section__text">
+          Nous avons traité toutes les données récupérées de sources différentes
+          pour créer une source commune (
+          {' '}
+          <strong>un tableau d&apos;objets</strong>
+          {' '}
+          ) regroupant directement tous les pays et les valeurs des indicateurs
+          leur correspondant. Ainsi, la visualisation devient nettement plus abordable.
+
+        </p>
+        <p className="section__text">
+          De plus, en ce qui concerne la map, nous calculons un
+          {' '}
+          <strong>score</strong>
+          {' '}
+          pour chaque pays selon les valeurs des indicateurs et le classement choisi
+          par l&apos;utilisateur, ce qui permettra de donner une idée sur les pays ayant
+          les meilleures conditions par ordre de couleur sur la map.
+        </p>
+
       </div>
 
       <div className="Article__section">
