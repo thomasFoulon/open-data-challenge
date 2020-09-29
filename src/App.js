@@ -13,9 +13,12 @@ import Report from './pages/Report/Report';
 import Main from './pages/Main/Main';
 import Footer from './layout/Footer/Footer';
 
+import Spinner from './components/Spinner/Spinner';
+
 import './App.css';
 
 function App() {
+  const [isLoading, setIsLoading] = useState(true);
   const [countries, setCountries] = useState([]);
   const [gdpAll, setGdpAll] = useState([]);
   const [homicideAll, setHomicideAll] = useState([]);
@@ -34,6 +37,7 @@ function App() {
     setPollutionAll(await fetchIndicatorAllCountries('pollution'));
     setUnemploymentAll(await fetchIndicatorAllCountries('unemployment'));
     setTransportAll(await fetchTransportQualityAllCountries());
+    setIsLoading(false);
   };
 
   useEffect(() => {
@@ -55,14 +59,16 @@ function App() {
     <Router>
       <div className="App">
         <Header />
-        <Switch>
-          <Route exact path="/">
-            <Main processedData={processedData} />
-          </Route>
-          <Route path="/report">
-            <Report />
-          </Route>
-        </Switch>
+        {isLoading ? <Spinner /> : (
+          <Switch>
+            <Route exact path="/">
+              <Main processedData={processedData} />
+            </Route>
+            <Route path="/report">
+              <Report />
+            </Route>
+          </Switch>
+        )}
         <Footer />
       </div>
     </Router>
