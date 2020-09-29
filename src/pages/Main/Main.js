@@ -12,7 +12,7 @@ const indicators = [
   { id: 'transportQuality', content: 'Qualité du transport', detail: 'Qualité des infrastructures de transport et de logistique sur une échelle de 1 à 5' },
   { id: 'literacy', content: 'Qualité de l’éducation', detail: 'Taux d\'alphabétisation en % de la population agée de plus de 15 ans' },
   { id: 'unemployment', content: 'Taux de chômage', detail: 'En % de la force de travail totale' },
-  { id: 'health', content: 'Qualité du service de santé', detail: 'Dépenses pour la santé par habitant en dollar' },
+  { id: 'health', content: 'Qualité du service de santé', detail: 'Dépenses pour la santé par habitant en dollars' },
   { id: 'pollution', content: 'Pollution', detail: 'Emissions de CO2 en tonnes par habitant' },
 ];
 
