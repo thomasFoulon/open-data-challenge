@@ -23,7 +23,8 @@
     "react-router-dom": "^5.2.0",
     "react-router-hash-link": "^2.1.0",
     "react-scripts": "3.4.3",
-    "react-tooltip": "^4.2.10"
+    "react-tooltip": "^4.2.10",
+    "react-switch": "^5.0.1"
   },
   "scripts": {
     "start": "react-scripts start",
