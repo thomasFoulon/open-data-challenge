@@ -32,7 +32,7 @@ function getRank(country, scores) {
   return currentScore.score;
 }
 
-function setEventOnEachFeature(country, layer) {
+function setEventOnEachFeature(country, layer, selectedCountryIds, onClickOnCountry) {
   layer.bindTooltip(`${country.properties.name}`);
   layer.on('mouseover', (e) => {
     e.target.openTooltip(e.latlng);
@@ -43,10 +43,13 @@ function setEventOnEachFeature(country, layer) {
   layer.on('mousemove', (e) => {
     e.target.getTooltip().setLatLng(e.latlng);
   });
+  layer.on('click', () => {
+    selectedCountryIds.add(country.id);
+    onClickOnCountry(Array.from(selectedCountryIds));
+  });
 }
 
-function MapContainer(props) {
-  const { scores } = props;
+function MapContainer({ scores, selectedCountryIds, onClickOnCountry }) {
   return (
     <Map
       id="Map"
@@ -70,7 +73,7 @@ function MapContainer(props) {
         mode="e"
         style={style}
         onEachFeature={(country, layer) => {
-          setEventOnEachFeature(country, layer);
+          setEventOnEachFeature(country, layer, selectedCountryIds, onClickOnCountry);
         }}
       />
     </Map>

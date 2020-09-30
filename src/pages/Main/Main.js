@@ -57,6 +57,7 @@ function getAllCountriesScores(processedData, items, indicatorsMinMax) {
 
 function Main(props) {
   const { processedData } = props;
+  const [selectedCountryIds, setSelectedCountryIds] = useState(new Set());
 
   const indicatorsMinMax = map(indicators, (indicator) => {
     const minValue = minBy(processedData, indicator.id)[indicator.id];
@@ -74,7 +75,11 @@ function Main(props) {
 
   return (
     <div className="Main">
-      <MapContainer scores={scores} />
+      <MapContainer
+        scores={scores}
+        selectedCountryIds={selectedCountryIds}
+        onClickOnCountry={(selectedIds) => setSelectedCountryIds(new Set(selectedIds))}
+      />
       <OrderableList
         processedData={processedData}
         items={indicators}
@@ -82,7 +87,12 @@ function Main(props) {
           setScore(getAllCountriesScores(processedData, newItems, indicatorsMinMax));
         }}
       />
-      <ChartBoard processedData={processedData} indicators={indicators} />
+      <ChartBoard
+        processedData={processedData}
+        indicators={indicators}
+        selectedCountryIds={selectedCountryIds}
+        setSelectedCountryIds={setSelectedCountryIds}
+      />
     </div>
   );
 }
