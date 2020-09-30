@@ -6,6 +6,7 @@ import {
   fetchIndicatorAllCountries,
   fetchTransportQualityAllCountries,
   fetchInequalityAllCountries,
+  fetchLearningAllCountries,
   processData,
 } from './api';
 
@@ -34,12 +35,12 @@ function App() {
     setCountries(await fetchCountries());
     setGdpAll(await fetchIndicatorAllCountries('gdp'));
     setHomicideAll(await fetchIndicatorAllCountries('homicide'));
-    setLiteracyAll(await fetchIndicatorAllCountries('literacy'));
     setHealthAll(await fetchIndicatorAllCountries('health'));
     setPollutionAll(await fetchIndicatorAllCountries('pollution'));
     setUnemploymentAll(await fetchIndicatorAllCountries('unemployment'));
     setTransportAll(await fetchTransportQualityAllCountries());
     setInequalityAll(await fetchInequalityAllCountries());
+    setLiteracyAll(await fetchLearningAllCountries());
     setIsLoading(false);
   };
 
