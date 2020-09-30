@@ -347,7 +347,7 @@ function Article() {
           <strong>qualité des transports</strong>
           , nous avons opté cette fois-ci pour Gapminder, où nous avons trouvé
           les données en CSV que nous avons converti via la bibliothèque D3 afin
-          d&apos;obtenir un tableau de données exploitables..
+          d&apos;obtenir un tableau de données exploitables.
         </p>
       </div>
 
