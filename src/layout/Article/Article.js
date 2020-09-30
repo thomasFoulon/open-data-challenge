@@ -115,7 +115,7 @@ function Article() {
               Inégalité:
               {' '}
               <span className="section_def">
-                Les différences de revenus au sein d&apos;une société
+                Différences de revenus au sein de la société selon le coefficient de Gini
               </span>
             </li>
           </ul>
