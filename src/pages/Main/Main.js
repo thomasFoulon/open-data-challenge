@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import {
-  map, minBy, maxBy, find, sum
+  map, minBy, maxBy, find
 } from 'lodash';
 import MapContainer from '../../layout/Map/Map';
 import OrderableList from '../../layout/OrderableList/OrderableList';
