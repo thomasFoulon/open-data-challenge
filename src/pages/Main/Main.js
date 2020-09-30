@@ -30,7 +30,14 @@ const indicators = [
   {
     id: 'pollution', content: 'Pollution', detail: 'Emissions de CO2 en tonnes par habitant', desc: false
   },
+  {
+    id: 'inequality', content: 'Inégalité', detail: 'Différences de revenus au sein de la société selon le coefficient de Gini', desc: false
+  }
 ];
+
+const scoreIndicator = {
+  id: 'score', content: 'Score calculé', detail: 'Score calculé par rapport à votre classement des indicateurs.', desc: true
+};
 
 function getScore(country, currentItems, indicatorsMinMax) {
   let score = 0;
@@ -38,8 +45,8 @@ function getScore(country, currentItems, indicatorsMinMax) {
     if (country[indicator.id] !== undefined && country[indicator.id] !== null) {
       const minMax = find(indicatorsMinMax, (element) => (element.id === indicator.id));
       score
-      += (currentItems.length - index)
-      * ((country[indicator.id] - minMax.min) / (minMax.max - minMax.min));
+        += (currentItems.length - index)
+        * ((country[indicator.id] - minMax.min) / (minMax.max - minMax.min));
     }
   });
   score /= currentItems.length;
@@ -97,7 +104,8 @@ function Main(props) {
       />
       <ChartBoard
         processedData={processedData}
-        indicators={indicators}
+        indicators={[scoreIndicator, ...indicators]}
+        scores={scores}
         selectedCountryIds={selectedCountryIds}
         setSelectedCountryIds={setSelectedCountryIds}
       />

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
@@ -12,13 +12,6 @@ import SelectableCountry from '../../components/SelectableCountry/SelectableCoun
 
 import './CountriesSelection.css';
 
-function hasSomeParentTheClass(element, classname) {
-  if (element === null || element === undefined) return false;
-  if (element.className === null || element.className === undefined) return false;
-  if (element.className.split(' ').indexOf(classname) >= 0) return true;
-  return element.parentNode && hasSomeParentTheClass(element.parentNode, classname);
-}
-
 function CountriesSelection(props) {
   const {
     countries,
@@ -28,6 +21,8 @@ function CountriesSelection(props) {
 
   const [matchingCountries, setMatchingCountries] = useState(countries);
   const [displayed, setDisplayed] = useState(false);
+
+  const countriesSelectionRef = useRef(null);
 
   const searchCountries = (event) => {
     const searchValue = event.target.value.trim().toLowerCase();
@@ -48,12 +43,23 @@ function CountriesSelection(props) {
     onChange(Array.from(selectedCountryIds));
   };
 
-  const undisplay = (event) => {
-    const focused = event.relatedTarget;
-    if (!hasSomeParentTheClass(focused, 'countriesSelection')) {
-      setDisplayed(false);
-    }
+  const undisplay = () => {
+    setDisplayed(false);
   };
+
+  useEffect(() => {
+    const listener = (event) => {
+      if (countriesSelectionRef.current && !countriesSelectionRef.current.contains(event.target)) {
+        undisplay();
+      }
+    };
+    document.addEventListener('mousedown', listener);
+    document.addEventListener('touchstart', listener);
+    return () => {
+      document.removeEventListener('mousedown', listener);
+      document.removeEventListener('touchstart', listener);
+    };
+  }, [countriesSelectionRef, undisplay]);
 
   let displayedCountriesClassName = 'displayedCountries';
 
@@ -62,7 +68,7 @@ function CountriesSelection(props) {
   }
 
   return (
-    <div className="countriesSelection" onBlur={undisplay}>
+    <div className="countriesSelection" ref={countriesSelectionRef}>
       <div className="select">
         <input type="text" onChange={searchCountries} placeholder="Rechercher un pays..." />
         <p>
