@@ -28,7 +28,11 @@ function Sidebar() {
               github="https://github.com/Phedri"
             />
             <Author name="Thomas FOULON" />
-            <Author name="Anne GAISNE" />
+            <Author
+              name="Anne GAISNE"
+              linkedin="https://www.linkedin.com/in/anne-gaisne"
+              github="https://github.com/Anne-Gaisne"
+            />
             <Author name="Oussama ALLALI" />
           </div>
         </div>
