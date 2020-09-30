@@ -21,7 +21,7 @@ function HeaderNav({ section, onSectionChange }) {
               if (section !== sections.MAP) onSectionChange(sections.MAP);
             }}
           >
-            Map
+            Carte
           </HashLink>
         </li>
 
@@ -33,7 +33,7 @@ function HeaderNav({ section, onSectionChange }) {
               if (section !== sections.CHART) onSectionChange(sections.CHART);
             }}
           >
-            Charts
+            Graphiques
 
           </HashLink>
         </li>
@@ -46,7 +46,7 @@ function HeaderNav({ section, onSectionChange }) {
               if (section !== sections.REPORT) onSectionChange(sections.REPORT);
             }}
           >
-            Report
+            Rapport
           </Link>
         </li>
 
