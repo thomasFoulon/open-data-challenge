@@ -13,7 +13,7 @@ import topology from '../../assets/json/countries-50m.json';
 const style = {
   weight: 0.5,
   color: 'white',
-  fillOpacity: 0.7,
+  fillOpacity: 0.9,
 };
 
 const styleHovered = {
@@ -59,8 +59,8 @@ function MapContainer({ scores, onClickOnCountry }) {
       <Choropleth
         data={topology}
         valueProperty={(country) => getRank(country, scores)}
-        scale={isColorBlind ? ['#F3B400', '#BB8B00', '#837171', '#0079CE', '#3994FC'] : ['red', 'orange', 'green']}
-        steps={7}
+        scale={isColorBlind ? ['#e5deff', '#a69bed', '#0a3fcf'] : ['red', 'orange', 'green']}
+        steps={10}
         mode="e"
         style={style}
         onClick={(event) => {
@@ -87,7 +87,7 @@ function MapContainer({ scores, onClickOnCountry }) {
           name="colorBlindBtn"
           className="colorGradient"
           style={{
-            background: isColorBlind ? 'linear-gradient(to right, #827170, #F2B400,#0379CE)' : 'linear-gradient(to right, red, orange, green)',
+            background: isColorBlind ? 'linear-gradient(to right, #e5deff, #a69bed, #0a3fcf)' : 'linear-gradient(to right, red, orange, green)',
           }}
 
           onClick={(e) => {
