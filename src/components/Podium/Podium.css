@@ -1,0 +1,137 @@
+  .Podium {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      z-index: 2000;
+      transform: translate(-50%,-50%);
+      background-color: white;
+      border-radius: 3px;
+      border: 1px solid rgba(0,0,0,0.15);
+      padding-bottom: 1.6rem;
+  }
+  .title {
+    text-align: center;
+    margin-bottom: 1.6rem;
+    border-bottom: 1px solid rgba(0,0,0,0.15);
+    padding: 0.8rem ;
+
+  }
+
+  .countries-container {
+      display: flex;
+      flex-direction: column;
+      border-radius: 3px;
+  }
+
+  .country-first-place {
+    background-color: #FFD700;
+    padding: 0.5rem 1.6rem;
+    color: white;
+    font-weight: bold;
+    font-size: 2.4rem;
+    margin-bottom: 1.2rem;
+    margin-right: 3.2rem;
+    margin-left: 3.2rem;
+    border-radius: 3px;
+
+
+  }
+  
+  .country-second-place {
+    background-color: #7f7f7f;
+    padding: 0.5rem 1.6rem;
+    color: white;
+    font-weight: bold;
+    font-size: 2.4rem;
+    margin-bottom: 1.2rem;
+    margin-right: 3.2rem;
+    margin-left: 3.2rem;
+    border-radius: 3px;
+
+
+
+
+
+  }
+  
+
+  .country-third-place {
+    background-color: #cd7f32;
+    padding: 0.5rem 1.6rem;
+    color: white;
+    font-weight: bold;
+    font-size: 2.4rem;
+    margin-right: 3.2rem;
+    margin-left: 3.2rem;
+    border-radius: 3px;
+
+
+  }
+  
+  /* .first-place {
+    background-color: #2ecc71;
+    height: 100px;
+    width: 100px;
+    margin: 0 auto;
+    line-height: 100px;
+    font-size: 50px;
+    font-weight: 800;
+    color: white;
+
+    text-align: center;
+    font-size: 2rem;
+
+
+    
+
+  }
+  
+  .second-place {
+    background-color: #f1c40f;
+    height: 100px;
+    width: 100px;
+    margin: 0 auto;
+    line-height: 100px;
+    font-size: 50px;
+    font-weight: 800;
+    color: white;
+
+    display: inline-block;
+    text-align: center;
+    font-size: 1.6rem;
+
+
+
+  }
+  
+  .third-place {
+    background-color: #e74c3c;
+    height: 100px;
+    width: 100px;
+    margin: 0 auto;
+    margin-left: -4px;
+    line-height: 100px;
+    font-size: 50px;
+    font-weight: 800;
+    color: white;
+    display: inline-block;
+    text-align: center;
+    font-size: 1.6rem;
+
+
+  }
+  
+  .first-place:hover {
+    transform: translate(0px, -20px);
+    transition: ease-in-out 0.1s;
+  }
+  
+  .second-place:hover {
+    transform: translate(-20px, 20px);
+    transition: ease-in-out 0.1s;
+  }
+  
+  .third-place:hover {
+    transform: translate(20px, 20px);
+    transition: ease-in-out 0.1s;
+  } */
