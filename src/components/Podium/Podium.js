@@ -15,13 +15,19 @@ function Podium({
 
       <div className="countries-container">
         <div className="country-first-place">
+          #1
+          {' '}
           {country1}
         </div>
         <div className="country-second-place">
+          #2
+          {' '}
           {country2}
 
         </div>
         <div className="country-third-place">
+          #3
+          {' '}
           {country3}
 
         </div>
