@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { DragDropContext, Draggable, Droppable } from 'react-beautiful-dnd';
-
+import ReactTooltip from 'react-tooltip';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowsAlt } from '@fortawesome/free-solid-svg-icons';
+import { faQuestionCircle } from '@fortawesome/free-regular-svg-icons';
 
 import './OrderableList.css';
 
@@ -25,7 +26,11 @@ function OrderableItem(item, index) {
           {...provided.dragHandleProps}
         >
           <div className="OrderableItemRank">{index + 1}</div>
-          <p className="OrderableItemText">{ item.content }</p>
+          <div className="OrderableItemText">
+            { item.content }
+            <FontAwesomeIcon className="OrderableItemInfo" icon={faQuestionCircle} size="lg" data-tip={item.detail} />
+            <ReactTooltip />
+          </div>
           <FontAwesomeIcon className="OrderableItemIcon" icon={faArrowsAlt} size="lg" />
         </div>
       )}
