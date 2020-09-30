@@ -62,13 +62,55 @@ function Article() {
           Pour pouvoir comparer les différents pays du monde, nous nous sommes basés sur
           les indicateurs suivants :
           <ul className="section__list">
-            <li>PIB par habitant</li>
-            <li>Taux de criminalité</li>
-            <li>Qualité de transport</li>
-            <li>Qualité de l&apos;éducation</li>
-            <li>Taux de chômage</li>
-            <li>Qualité de service de santé</li>
-            <li>Pollution</li>
+            <li>
+              PIB par habitant:
+              {' '}
+              <span className="section_def">
+                en dollars
+              </span>
+            </li>
+            <li>
+              Taux de criminalité:
+              {' '}
+              <span className="section_def">
+                Nombre d&apos;homicides volontaires pour 100.000 personnes
+              </span>
+            </li>
+            <li>
+              Qualité de transport:
+              {' '}
+              <span className="section_def">
+                Qualité des infrastructures de transport et de logistique sur une échelle de 1 à 5
+              </span>
+            </li>
+            <li>
+              Qualité de l&apos;éducation:
+              {' '}
+              <span className="section_def">
+                Taux d&apos;alphabétisation en % de la population agée de plus de 15 ans
+              </span>
+            </li>
+            <li>
+              Taux de chômage:
+              {' '}
+              <span className="section_def">
+                En % de la force de travail totale
+              </span>
+            </li>
+            <li>
+              Qualité de service de santé:
+              {' '}
+              <span className="section_def">
+                Dépenses pour la santé par habitant en dollars
+              </span>
+            </li>
+            <li>
+              Pollution:
+              {' '}
+              <span className="section_def">
+                Emissions de CO2 en tonnes par habitant
+              </span>
+            </li>
           </ul>
           Ces différents jeux de données proviennent principalement de
           {' '}
@@ -79,6 +121,46 @@ function Article() {
           <a className="section__link" href="https://www.gapminder.org/">Gapminder</a>
           .
         </p>
+      </div>
+
+      <div className="Article__section">
+        <h2 className="section__title">
+          Visualisation des données
+        </h2>
+
+        <p className="section__text">
+          Pour pouvoir representer et croiser toutes ces données de la
+          façon la plus expressive possible,
+          nous avons opté pour l&apos;utilisation de deux représentation.
+
+        </p>
+        <ul className="section__list">
+          <li>
+            Représentation carthographique :
+            {' '}
+            <span className="section_def">
+              est basée sur une carte où on peut distinguer les
+              différents pays du monde. Elle nous permet de localiser géographiquement les
+              informations. En effet, les surfaces des pays ont une couleur qui peut aller du
+              rouge jusqu&apos;au vert et qui représente les conditions de vie de ce pays.
+
+            </span>
+          </li>
+          <li>
+            Représentation graphique :
+            {' '}
+            <span className="section_def">
+              Pour la comparaison des différents pays du monde selon un indicateur bien précis,
+              nous avons opté pour l&apos;utilisation des barplots. Ce choix nous a paru très
+              intéressant en terme de visualisation puisqu&apos;il nous permet de distinguer
+              très facilement les différences
+              et nous permettra d&apos;aboutir à des conclusions adéquates.
+              {' '}
+            </span>
+
+          </li>
+
+        </ul>
       </div>
 
       <div className="Article__section">
@@ -229,10 +311,11 @@ function Article() {
         </h2>
 
         <p className="section__text">
-          Sit et ea ad pariatur fugiat dolor do amet anim. Lorem
-          incididunt tempor magna duis eiusmod qui pariatur cupidatat sint
-          ex veniam nostrud. Elit cupidatat exercitation Lorem minim laborum
-
+          Ce projet est le fruit d&apos;un travail d&apos;équipe !
+          Chaque instant que nous avons passé lors de la création de
+          ce dernier était un instant de plaisir. Certe il reste beaucoup d&apos;amélioration
+          à faire mais nous avons appris beaucoup de notions sur la visualisation de
+          données qui nous seront très utiles dans notre monde professionnel.
         </p>
       </div>
 
