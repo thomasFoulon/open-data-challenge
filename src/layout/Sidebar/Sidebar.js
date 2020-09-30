@@ -3,6 +3,7 @@ import Author from '../../components/Author/Author';
 
 import amine from '../../assets/amine-elmouradi.jpg';
 import imane from '../../assets/imane-el-mouradi.png';
+import thomas from '../../assets/thomas-foulon.jpg';
 
 import './Sidebar.css';
 
@@ -27,7 +28,12 @@ function Sidebar() {
               linkedin="https://www.linkedin.com/in/imane-el-mouradi-a3a554165/"
               github="https://github.com/Phedri"
             />
-            <Author name="Thomas FOULON" />
+            <Author
+              src={thomas}
+              name="Thomas FOULON"
+              linkedin="https://www.linkedin.com/in/thomas-foulon-informatique"
+              github="https://github.com/thomasFoulon"
+            />
             <Author
               name="Anne GAISNE"
               linkedin="https://www.linkedin.com/in/anne-gaisne"
