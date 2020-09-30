@@ -45,11 +45,11 @@ export default function BarPlot(props) {
     (country) => typeof getCountryIndicator(country) === 'number'
   );
 
-  const compareDesc = (country1, country2) => getCountryIndicator(country1)
-    < getCountryIndicator(country2);
+  const compareDesc = (country1, country2) => getCountryIndicator(country2)
+    - getCountryIndicator(country1);
 
   const compareAsc = (country1, country2) => getCountryIndicator(country1)
-    > getCountryIndicator(country2);
+    - getCountryIndicator(country2);
 
   const sortedCountries = filteredCountries.sort((country1, country2) => {
     if (descOrder) return compareDesc(country1, country2);
