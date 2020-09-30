@@ -8,10 +8,14 @@ import './Map.css';
 import topology from '../../assets/json/countries-50m.json';
 
 const style = {
-  fillColor: '#F28F3B',
   weight: 1,
   color: 'darkgrey',
   fillOpacity: 0.7,
+};
+
+const styleHovered = {
+  weight: 2,
+  color: 'white',
 };
 
 const mapBounds = [
@@ -32,21 +36,7 @@ function getRank(country, scores) {
   return currentScore.score;
 }
 
-function setEventOnEachFeature(country, layer) {
-  layer.bindTooltip(`${country.properties.name}`);
-  layer.on('mouseover', (e) => {
-    e.target.openTooltip(e.latlng);
-  });
-  layer.on('mouseout', (e) => {
-    e.target.closeTooltip();
-  });
-  layer.on('mousemove', (e) => {
-    e.target.getTooltip().setLatLng(e.latlng);
-  });
-}
-
-function MapContainer(props) {
-  const { scores } = props;
+function MapContainer({ scores, onClickOnCountry }) {
   return (
     <Map
       id="Map"
@@ -69,8 +59,20 @@ function MapContainer(props) {
         steps={7}
         mode="e"
         style={style}
-        onEachFeature={(country, layer) => {
-          setEventOnEachFeature(country, layer);
+        onClick={(event) => {
+          onClickOnCountry(event.layer.feature.id);
+        }}
+        onMouseOver={(e) => {
+          e.layer.bindTooltip(`${e.layer.feature.properties.name} <br /> ${getRank(e.layer.feature, scores)}`);
+          e.layer.openTooltip(e.latlng);
+          e.layer.setStyle(styleHovered);
+        }}
+        onMouseOut={(e) => {
+          e.layer.closeTooltip();
+          e.layer.setStyle(style);
+        }}
+        onMouseMove={(e) => {
+          e.layer.getTooltip().setLatLng(e.latlng);
         }}
       />
     </Map>

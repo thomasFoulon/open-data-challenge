@@ -9,15 +9,15 @@ import './ChartBoard.css';
 import CountriesSelection from './CountriesSelection';
 import BarPlot from './BarPlot';
 
-function ChartBoard({ processedData, indicators, scores }) {
-  const [selectedCountryIds, setSelectedCountryIds] = useState(new Set());
+function ChartBoard({
+  processedData, indicators, scores, selectedCountryIds, setSelectedCountryIds
+}) {
   const [currentIndicatorIndex, setCurrentIndicatorIndex] = useState(0);
   const [displayWorstCountries, setDisplayWorstCountries] = useState(false);
 
   const handleChange = (event) => {
     setCurrentIndicatorIndex(event.target.value);
   };
-
   const selectedCountries = processedData.filter((country) => selectedCountryIds.has(country.id));
   return (
     <div id="ChartBoard" className="ChartBoard">
