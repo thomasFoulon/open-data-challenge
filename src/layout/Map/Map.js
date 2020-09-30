@@ -8,10 +8,14 @@ import './Map.css';
 import topology from '../../assets/json/countries-50m.json';
 
 const style = {
-  fillColor: '#F28F3B',
   weight: 1,
   color: 'darkgrey',
   fillOpacity: 0.7,
+};
+
+const styleHovered = {
+  weight: 2,
+  color: 'white',
 };
 
 const mapBounds = [
@@ -61,9 +65,11 @@ function MapContainer({ scores, onClickOnCountry }) {
         onMouseOver={(e) => {
           e.layer.bindTooltip(`${e.layer.feature.properties.name} <br /> ${getRank(e.layer.feature, scores)}`);
           e.layer.openTooltip(e.latlng);
+          e.layer.setStyle(styleHovered);
         }}
         onMouseOut={(e) => {
           e.layer.closeTooltip();
+          e.layer.setStyle(style);
         }}
         onMouseMove={(e) => {
           e.layer.getTooltip().setLatLng(e.latlng);
