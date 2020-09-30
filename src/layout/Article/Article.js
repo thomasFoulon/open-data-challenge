@@ -125,6 +125,46 @@ function Article() {
 
       <div className="Article__section">
         <h2 className="section__title">
+          Visualisation des données
+        </h2>
+
+        <p className="section__text">
+          Pour pouvoir representer et croiser toutes ces données de la
+          façon la plus expressive possible,
+          nous avons opté pour l&apos;utilisation de deux représentation.
+
+        </p>
+        <ul className="section__list">
+          <li>
+            Représentation carthographique :
+            {' '}
+            <span className="section_def">
+              est basée sur une carte où on peut distinguer les
+              différents pays du monde. Elle nous permet de localiser géographiquement les
+              informations. En effet, les surfaces des pays ont une couleur qui peut aller du
+              rouge jusqu&apos;au vert et qui représente les conditions de vie de ce pays.
+
+            </span>
+          </li>
+          <li>
+            Représentation graphique :
+            {' '}
+            <span className="section_def">
+              Pour la comparaison des différents pays du monde selon un indicateur bien précis,
+              nous avons opté pour l&apos;utilisation des barplots. Ce choix nous a paru très
+              intéressant en terme de visualisation puisqu&apos;il nous permet de distinguer
+              très facilement les différences
+              et nous permettra d&apos;aboutir à des conclusions adéquates.
+              {' '}
+            </span>
+
+          </li>
+
+        </ul>
+      </div>
+
+      <div className="Article__section">
+        <h2 className="section__title">
           Outils utilisés
         </h2>
         <p className="section__text">
@@ -271,10 +311,11 @@ function Article() {
         </h2>
 
         <p className="section__text">
-          Sit et ea ad pariatur fugiat dolor do amet anim. Lorem
-          incididunt tempor magna duis eiusmod qui pariatur cupidatat sint
-          ex veniam nostrud. Elit cupidatat exercitation Lorem minim laborum
-
+          Ce projet est le fruit d&apos;un travail d&apos;équipe !
+          Chaque instant que nous avons passé lors de la création de
+          ce dernier était un instant de plaisir. Certe il reste beaucoup d&apos;amélioration
+          à faire mais nous avons appris beaucoup de notions sur la visualisation de
+          données qui nous seront très utiles dans notre monde professionnel.
         </p>
       </div>
 
