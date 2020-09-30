@@ -3,6 +3,7 @@ import React from 'react';
 import ensimagLogo from '../../assets/ensimag.png';
 import gapminderLogo from '../../assets/gapminder.png';
 import worldBankLogo from '../../assets/world-bank.png';
+import githubLogo from '../../assets/github.svg';
 
 import './Footer.css';
 
@@ -26,6 +27,10 @@ function Footer() {
 
         <a href="https://www.gapminder.org/" target="_blank" rel="noreferrer">
           <img className="Footer__image" src={gapminderLogo} alt="" />
+        </a>
+
+        <a href="https://github.com/thomasFoulon/open-data-challenge" target="_blank" rel="noreferrer">
+          <img className="Footer__image" src={githubLogo} alt="" />
         </a>
       </div>
     </div>
