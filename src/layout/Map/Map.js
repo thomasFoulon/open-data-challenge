@@ -52,7 +52,7 @@ function MapContainer(props) {
       id="Map"
       center={[46.227638, 2.213749]}
       zoom={2}
-      maxZoom={10}
+      maxZoom={6}
       minZoom={2}
       maxBounds={mapBounds}
     >

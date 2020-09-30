@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import {
-  map, minBy, maxBy, find
+  map, minBy, maxBy, find, sum
 } from 'lodash';
 import MapContainer from '../../layout/Map/Map';
 import OrderableList from '../../layout/OrderableList/OrderableList';
@@ -24,9 +24,10 @@ function getScore(country, currentItems, indicatorsMinMax) {
     if (country[indicator.id] !== undefined && country[indicator.id] !== null) {
       const minMax = find(indicatorsMinMax, (element) => (element.id === indicator.id));
       score
-      += (7 - (index + 1)) * ((country[indicator.id] - minMax.min) / (minMax.max - minMax.min));
+      += (7 - index) * ((country[indicator.id] - minMax.min) / (minMax.max - minMax.min));
     }
   });
+  score /= 7;
   return score;
 }
 
