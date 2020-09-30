@@ -175,7 +175,7 @@ function Article() {
             Représentation carthographique :
             {' '}
             <span className="section_def">
-              elle permet de distinguer quels pays du monde correspond le plus aux
+              elle permet de distinguer quel pays du monde correspond le plus aux
               critères de l&apos;utilisateur. Elle localise géographiquement les
               informations en mettant parfois en lumière les zones du globe désavantagées par le
               choix de l&apos;ordre des indicateurs pris en compte. Pour ce faire, un gradient
@@ -202,7 +202,7 @@ function Article() {
 
       <div className="Article__section">
         <h2 className="section__title">
-          Intéraction
+          Interaction
         </h2>
 
         <p className="section__text">
@@ -363,7 +363,7 @@ function Article() {
           montre que des pays favorisés par certains indicateurs économiques se retrouvent moins
           avantagés dès lors que des changements d&apos;indicateurs s&apos;opèrent.
           <br />
-          Cela nous a aussi permis de nous familiarisé avec des techniques de visualisation
+          Cela nous a aussi permis de nous familiariser avec des techniques de visualisation
           de données tout en ayant un objectif précis en tête.
         </p>
       </div>
