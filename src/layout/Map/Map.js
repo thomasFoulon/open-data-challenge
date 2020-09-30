@@ -8,10 +8,11 @@ import './Map.css';
 import topology from '../../context/countries-50m.json';
 
 const style = {
-  fillColor: '#F28F3B',
+  fillColor: 'white',
   weight: 1,
   color: 'grey',
   fillOpacity: 0.5,
+
 };
 
 const mapBounds = [
@@ -56,16 +57,11 @@ function MapContainer(props) {
       minZoom={2}
       maxBounds={mapBounds}
     >
-      <TileLayer
-        url="https://tiles.stadiamaps.com/tiles/outdoors/{z}/{x}/{y}{r}.png"
-        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-        noWrap
-        bounds={mapBounds}
-      />
+
       <Choropleth
         data={topology}
         valueProperty={(country) => getRank(country, scores)}
-        scale={['#b3cde0', '#011f4b']}
+        scale={['red', 'orange', 'green']}
         steps={7}
         mode="e"
         style={style}
@@ -73,6 +69,18 @@ function MapContainer(props) {
           setEventOnEachFeature(country, layer, scores);
         }}
       />
+      <TileLayer
+        url="https://tiles.stadiamaps.com/tiles/outdoors/{z}/{x}/{y}{r}.png"
+        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        noWrap
+        bounds={mapBounds}
+
+      />
+      <div className="colorGradient-container">
+        <span className="color-text--1">Mauvais</span>
+        <div className="colorGradient" />
+        <span className="color-text--2">Excellent</span>
+      </div>
     </Map>
   );
 }
