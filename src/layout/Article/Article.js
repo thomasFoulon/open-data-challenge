@@ -195,10 +195,33 @@ function Article() {
 
       <div className="Article__section">
         <h2 className="section__title">
+          Intéraction
+        </h2>
+
+        <p className="section__text">
+          La liste drag and drop des indicateurs permet à l&apos;utilisateur
+          de les trier simplement. Les scores obtenus sont alors visibles
+          en survolant les pays sur la carte. De plus, un clique sur un pays
+          permet de mettre à jour la liste des pays représentés sur les graphiques.
+          Cela l&apos;ajoute s&apos;il n&apos;y était pas, ou le retire
+          s&apos;il était déjà présent.
+        </p>
+
+        <p className="section__text">
+          Il est possible de contrôler les pays représentés sur le graphique à
+          l&apos;aide d&apos;une liste déroulante ressençant tous les pays obtenus
+          en interrogeant l&apos;API de Worldbank. Il est aussi possible de choisir
+          l&apos;indicateur ou le score représenté par l&apos;histogramme afin d&apos;accéder
+          aux détails des données.
+        </p>
+      </div>
+
+      <div className="Article__section">
+        <h2 className="section__title">
           Outils utilisés
         </h2>
         <p className="section__text">
-          Pour la création de cette application on a fait appel à plusieurs outils qui sont :
+          Pour la création de cette application, nous avons fait appel à plusieurs outils qui sont :
           <ul className="section__list">
             <li>
               ReactJs :
@@ -308,7 +331,6 @@ function Article() {
           les données en csv et que nous avons converties en JSON pour tout uniformiser.
         </p>
       </div>
-
 
       <div className="Article__section">
         <h2 className="section__title">
