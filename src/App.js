@@ -5,6 +5,7 @@ import {
   fetchCountries,
   fetchIndicatorAllCountries,
   fetchTransportQualityAllCountries,
+  fetchInequalityAllCountries,
   processData,
 } from './api';
 
@@ -27,6 +28,7 @@ function App() {
   const [pollutionAll, setPollutionAll] = useState([]);
   const [unemploymentAll, setUnemploymentAll] = useState([]);
   const [transportAll, setTransportAll] = useState([]);
+  const [inequalityAll, setInequalityAll] = useState([]);
 
   const fetchData = async () => {
     setCountries(await fetchCountries());
@@ -37,6 +39,7 @@ function App() {
     setPollutionAll(await fetchIndicatorAllCountries('pollution'));
     setUnemploymentAll(await fetchIndicatorAllCountries('unemployment'));
     setTransportAll(await fetchTransportQualityAllCountries());
+    setInequalityAll(await fetchInequalityAllCountries());
     setIsLoading(false);
   };
 
@@ -52,7 +55,8 @@ function App() {
     healthAll,
     pollutionAll,
     unemploymentAll,
-    transportAll
+    transportAll,
+    inequalityAll
   );
 
   return (

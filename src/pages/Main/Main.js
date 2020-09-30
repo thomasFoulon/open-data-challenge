@@ -30,6 +30,9 @@ const indicators = [
   {
     id: 'pollution', content: 'Pollution', detail: 'Emissions de CO2 en tonnes par habitant', desc: false
   },
+  {
+    id: 'inequality', content: 'Inégalité', detail: "Les différences de revenus au sein d'une société", desc: false
+  }
 ];
 
 function getScore(country, currentItems, indicatorsMinMax) {
@@ -38,8 +41,8 @@ function getScore(country, currentItems, indicatorsMinMax) {
     if (country[indicator.id] !== undefined && country[indicator.id] !== null) {
       const minMax = find(indicatorsMinMax, (element) => (element.id === indicator.id));
       score
-      += (currentItems.length - index)
-      * ((country[indicator.id] - minMax.min) / (minMax.max - minMax.min));
+        += (currentItems.length - index)
+        * ((country[indicator.id] - minMax.min) / (minMax.max - minMax.min));
     }
   });
   score /= currentItems.length;
