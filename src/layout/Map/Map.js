@@ -5,7 +5,7 @@ import Choropleth from 'react-leaflet-choropleth';
 import 'leaflet/dist/leaflet.css';
 import './Map.css';
 
-import topology from '../../context/countries-50m.json';
+import topology from '../../assets/json/countries-50m.json';
 
 const style = {
   fillColor: '#F28F3B',
