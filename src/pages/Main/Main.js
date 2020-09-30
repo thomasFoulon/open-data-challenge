@@ -35,6 +35,10 @@ const indicators = [
   }
 ];
 
+const scoreIndicator = {
+  id: 'score', content: 'Score calculé', detail: 'Score calculé par rapport à votre classement des indicateurs.', desc: true
+};
+
 function getScore(country, currentItems, indicatorsMinMax) {
   let score = 0;
   currentItems.forEach((indicator, index) => {
@@ -85,7 +89,11 @@ function Main(props) {
           setScore(getAllCountriesScores(processedData, newItems, indicatorsMinMax));
         }}
       />
-      <ChartBoard processedData={processedData} indicators={indicators} />
+      <ChartBoard
+        processedData={processedData}
+        indicators={[scoreIndicator, ...indicators]}
+        scores={scores}
+      />
     </div>
   );
 }
