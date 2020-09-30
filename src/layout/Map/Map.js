@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Map, TileLayer } from 'react-leaflet';
 import Choropleth from 'react-leaflet-choropleth';
 import ReactTooltip from 'react-tooltip';
@@ -48,15 +48,12 @@ function getTop3(scores) {
   return scoresSorted.slice(0, 3);
 }
 function compare(score1, score2) {
-  return score1.score < score2.score;
+  return score2.score - score1.score;
 }
 function MapContainer({ scores, onClickOnCountry }) {
   const [isColorBlind, setIsColorBlind] = useState(true);
   const [isPodiumHidden, setIsPodiumHidden] = useState(true);
-  let top3Countries = getTop3(scores);
-  useEffect(() => {
-    top3Countries = getTop3(scores);
-  }, [top3Countries]);
+  const top3Countries = getTop3(scores);
 
   return (
     <Map
