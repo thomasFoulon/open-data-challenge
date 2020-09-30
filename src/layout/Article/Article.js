@@ -63,49 +63,49 @@ function Article() {
           les indicateurs suivants :
           <ul className="section__list">
             <li>
-              PIB par habitant:
+              PIB par habitant :
               {' '}
               <span className="section_def">
-                en dollars
+                En dollars
               </span>
             </li>
             <li>
-              Taux de criminalité:
+              Taux de criminalité :
               {' '}
               <span className="section_def">
                 Nombre d&apos;homicides volontaires pour 100.000 personnes
               </span>
             </li>
             <li>
-              Qualité de transport:
+              Qualité de transport :
               {' '}
               <span className="section_def">
                 Qualité des infrastructures de transport et de logistique sur une échelle de 1 à 5
               </span>
             </li>
             <li>
-              Qualité de l&apos;éducation:
+              Qualité de l&apos;éducation :
               {' '}
               <span className="section_def">
                 Taux d&apos;alphabétisation en % de la population agée de plus de 15 ans
               </span>
             </li>
             <li>
-              Taux de chômage:
+              Taux de chômage :
               {' '}
               <span className="section_def">
                 En % de la force de travail totale
               </span>
             </li>
             <li>
-              Qualité de service de santé:
+              Qualité de service de santé :
               {' '}
               <span className="section_def">
                 Dépenses pour la santé par habitant en dollars
               </span>
             </li>
             <li>
-              Pollution:
+              Pollution :
               {' '}
               <span className="section_def">
                 Emissions de CO2 en tonnes par habitant
@@ -129,11 +129,10 @@ function Article() {
         </h2>
         <p className="section__text">
           Nous avons traité toutes les données récupérées de sources différentes
-          pour créer une source commune (
+          pour créer une source commune,
           {' '}
           <strong>un tableau d&apos;objets</strong>
-          {' '}
-          ) regroupant directement tous les pays et les valeurs des indicateurs
+          , regroupant directement tous les pays et les valeurs des indicateurs
           leur correspondant. Ainsi, la visualisation devient nettement plus abordable.
 
         </p>
@@ -143,8 +142,8 @@ function Article() {
           <strong>score</strong>
           {' '}
           pour chaque pays selon les valeurs des indicateurs et le classement choisi
-          par l&apos;utilisateur, ce qui permet de donner une idée sur les pays ayant
-          les meilleures conditions. Ce score est la moyenne pondérée des indicateurs
+          par l&apos;utilisateur. Cela permet de donner une idée sur les pays ayant
+          les meilleures conditions de vie. Ce score est la moyenne pondérée des indicateurs
           normalisés en indice sans dimension. La pondération se fait avec les poids
           indiqués par l&apos;utilisateur à l&apos;aide de la liste.
           L&apos;indice pour un indicateur donné est égal à :
@@ -169,22 +168,23 @@ function Article() {
             Représentation carthographique :
             {' '}
             <span className="section_def">
-              cette carte permet de distinguer quels pays du monde correspond le plus aux
-              critères de l&apos;utilisateur. Elle nous permet de localiser géographiquement les
+              elle permet de distinguer quels pays du monde correspond le plus aux
+              critères de l&apos;utilisateur. Elle localise géographiquement les
               informations en mettant parfois en lumière les zones du globe désavantagées par le
               choix de l&apos;ordre des indicateurs pris en compte. Pour ce faire, un gradient
               indique les pays en fonction de leur score.
 
             </span>
           </li>
+          <br />
           <li>
             Représentation graphique :
             {' '}
             <span className="section_def">
               Pour la comparaison des différents pays du monde selon un indicateur bien précis,
-              nous avons opté pour l&apos;utilisation des barplots. Ce choix nous a paru très
-              intéressant en terme de visualisation puisqu&apos;il nous permet de distinguer
-              très facilement les différences tout en accédant à une donnée plus détaillé.
+              nous avons opté pour l&apos;utilisation des barplots. Ce choix permet de distinguer
+              très facilement les différences entre pays tout en accédant à une donnée
+              plus détaillée.
               {' '}
             </span>
 
@@ -201,18 +201,21 @@ function Article() {
         <p className="section__text">
           La liste drag and drop des indicateurs permet à l&apos;utilisateur
           de les trier simplement. Les scores obtenus sont alors visibles
-          en survolant les pays sur la carte. De plus, un clique sur un pays
+          en survolant les pays sur la carte. De plus, un clic sur un pays
           permet de mettre à jour la liste des pays représentés sur les graphiques.
           Cela l&apos;ajoute s&apos;il n&apos;y était pas, ou le retire
           s&apos;il était déjà présent.
         </p>
 
         <p className="section__text">
-          Il est possible de contrôler les pays représentés sur le graphique à
+          Il est aussi possible de contrôler les pays représentés sur le graphique à
           l&apos;aide d&apos;une liste déroulante ressençant tous les pays obtenus
-          en interrogeant l&apos;API de Worldbank. Il est aussi possible de choisir
-          l&apos;indicateur ou le score représenté par l&apos;histogramme afin d&apos;accéder
-          aux détails des données.
+          en interrogeant l&apos;API de Worldbank. Deux bouttons sont utiles
+          afin de sélectionner et déselectionner directement tous les pays.
+          Il est aussi possible de choisir l&apos;indicateur ou le score
+          représenté par l&apos;histogramme afin d&apos;accéder
+          aux données. Le survole sur une barre de l&apos;histogramme affiche le nom du pays
+          et la valeur exacte pour l&apos;indicateur représenté.
         </p>
       </div>
 
@@ -235,7 +238,7 @@ function Article() {
               Leaflet :
               {' '}
               <span className="section_def">
-                Une bibliothèque JavaScript open-source moderne permettant l&apos;intégration de
+                Une bibliothèque JavaScript open-source gérant l&apos;intégration de
                 cartes interactives.
                 {' '}
               </span>
@@ -245,16 +248,23 @@ function Article() {
               ChartJs :
               {' '}
               <span className="section_def">
-                Un module qui nous a permis d&apos;intégrer des
-                graphiques interactifs de façon efficace.
+                Un module de création de graphiques interactifs de façon efficace.
+              </span>
+            </li>
 
+            <li>
+              D3 :
+              {' '}
+              <span className="section_def">
+                Une bibliothèque JavaScript open-source traitant les fichiers CSV
+                afin de les exploiter.
               </span>
             </li>
 
             <li>
               Github/Git :
               {' '}
-              <span className="section_def">Nous avons utilisé ces outils pour la gestion de versions de notre projet à la fois au niveau local et distant. </span>
+              <span className="section_def">Un outil pour la gestion de versions qui a aidé à l&apos;organisation du projet tant au niveau local qu&apos;au niveau distant.</span>
             </li>
 
           </ul>
@@ -269,10 +279,10 @@ function Article() {
         <img src={archi} alt="architecture" className="img-archi" />
 
         <p className="section__text">
-          Notre projet a été premièrement bootstrap avec le module npm
+          Notre projet a été premièrement créé avec le module npm
           {' '}
           <strong>create-react-app</strong>
-          , ensuite, nous l&apos;avons réparti en plusieurs dossiers et sous dossiers
+          . Ensuite, nous l&apos;avons réparti en plusieurs dossiers et sous dossiers
           pour maintenir une bonne organisation et faciliter ainsi l&apos;implémentation
           de chaque fonctionnalité.
         </p>
@@ -295,8 +305,9 @@ function Article() {
               <string>assets</string>
               <span className="section_def">
                 {' '}
-                qui regroupe toutes les images, icônes et des données JSON sur la qualité du
-                transport récoltées sur Gapminder.
+                qui regroupe toutes les images, icônes, des données JSON sur la qualité du
+                transport récoltées sur Gapminder et des données GeoJSON décrivant les
+                frontières des pays pour l&apos;affichage des couleurs.
                 {' '}
               </span>
             </li>
@@ -314,7 +325,7 @@ function Article() {
               <span className="section_def">
                 {' '}
                 qui regroupent les différentes pages et sections de l&apos;interface de
-                notre projet, par exemple : la map, le graphique et le rapport.
+                notre projet, par exemple : la carte, le graphique et le rapport.
                 {' '}
               </span>
             </li>
@@ -324,11 +335,12 @@ function Article() {
         <p className="section__text">
           En ce qui concerne les données adoptées, nous avons utilisé l&apos;API de World Bank
           pour récupérer les valeurs de 6 indicateurs pour tous les pays.
-          Cependant, n&apos;ayant pas trouvé l&apos;indicateur
+          Cependant, n&apos;ayant pas trouvé un indicateur adéquat sur la
           {' '}
-          <strong>Qualité de transport</strong>
+          <strong>qualité des transports</strong>
           , nous avons opté cette fois-ci pour Gapminder, où nous avons trouvé
-          les données en csv et que nous avons converties en JSON pour tout uniformiser.
+          les données en CSV que nous avons converti via la bibliothèque D3 afin
+          d&apos;obtenir un tableau de données exploitables..
         </p>
       </div>
 
@@ -338,11 +350,14 @@ function Article() {
         </h2>
 
         <p className="section__text">
-          Ce projet est le fruit d&apos;un travail d&apos;équipe !
-          Chaque instant que nous avons passé lors de la création de
-          ce dernier était un instant de plaisir. Certe il reste beaucoup d&apos;amélioration
-          à faire mais nous avons appris beaucoup de notions sur la visualisation de
-          données qui nous seront très utiles dans notre monde professionnel.
+          Ce projet permet d&apos;avoir une vision globale sur des indicateurs qui ne
+          sont pas forcément mis en valeur lorsque des comparaisons entre pays sont réalisées.
+          Le choix pour l&apos;utilisateur dans l&apos;ordre d&apos;importance des indicateurs
+          montre que des pays favorisés par certains indicateurs économiques se retrouvent moins
+          avantagés dès lors que des changements d&apos;indicateurs s&apos;opèrent.
+          <br />
+          Cela nous a aussi permis de nous familiarisé avec des techniques de visualisation
+          de données tout en ayant un objectif précis en tête.
         </p>
       </div>
 
