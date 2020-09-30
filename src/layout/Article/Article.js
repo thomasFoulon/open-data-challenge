@@ -217,7 +217,7 @@ function Article() {
         <p className="section__text">
           Il est aussi possible de contrôler les pays représentés sur le graphique à
           l&apos;aide d&apos;une liste déroulante ressençant tous les pays obtenus
-          en interrogeant l&apos;API de Worldbank. Deux bouttons sont utiles
+          en interrogeant l&apos;API de World Bank. Deux bouttons sont utiles
           afin de sélectionner et déselectionner directement tous les pays.
           Il est aussi possible de choisir l&apos;indicateur ou le score
           représenté par l&apos;histogramme afin d&apos;accéder
