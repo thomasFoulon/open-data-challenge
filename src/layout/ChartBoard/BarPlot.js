@@ -14,23 +14,25 @@ export default function BarPlot(props) {
     displayWorstCountries
   } = props;
 
-  const datasets = indicators.map((indicator, index) => {
-    const datasetColor = colors[index % colors.length];
-    return {
-      label: indicator.content,
-      backgroundColor: color(datasetColor).alpha(0.5).rgbString(),
-      borderColor: datasetColor,
-      borderWidth: 1
-    };
-  });
-
   if (selectedCountries.length === 0) {
     return (
       <p className="chart">Sélectionnez un pays.</p>
     );
   }
 
-  const { id: indicatorId, desc } = indicators[currentIndicatorIndex];
+  const {
+    id: indicatorId,
+    content,
+    detail,
+    desc
+  } = indicators[currentIndicatorIndex];
+
+  const dataset = {
+    label: content,
+    backgroundColor: color(colors[currentIndicatorIndex]).alpha(0.5).rgbString(),
+    borderColor: colors[currentIndicatorIndex],
+    borderWidth: 1
+  };
 
   const descOrder = displayWorstCountries ? !desc : desc;
 
@@ -58,13 +60,13 @@ export default function BarPlot(props) {
 
   const top50 = sortedCountries.slice(0, 49);
 
-  datasets[currentIndicatorIndex].data = top50.map(
+  dataset.data = top50.map(
     (country) => getCountryIndicator(country).toFixed(2)
   );
 
   const barChartData = {
     labels: top50.map((country) => country.name),
-    datasets: [datasets[currentIndicatorIndex]]
+    datasets: [dataset]
   };
 
   let title = 'Comparatif des indicateurs';
@@ -101,6 +103,10 @@ export default function BarPlot(props) {
               display: true,
               ticks: {
                 beginAtZero: true
+              },
+              scaleLabel: {
+                display: true,
+                labelString: detail
               }
             }]
           }
