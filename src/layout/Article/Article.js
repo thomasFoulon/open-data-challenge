@@ -125,13 +125,43 @@ function Article() {
 
       <div className="Article__section">
         <h2 className="section__title">
+          Traitement de données
+        </h2>
+        <p className="section__text">
+          Nous avons traité toutes les données récupérées de sources différentes
+          pour créer une source commune (
+          {' '}
+          <strong>un tableau d&apos;objets</strong>
+          {' '}
+          ) regroupant directement tous les pays et les valeurs des indicateurs
+          leur correspondant. Ainsi, la visualisation devient nettement plus abordable.
+
+        </p>
+        <p className="section__text">
+          Avec ce tableau, nous calculons un
+          {' '}
+          <strong>score</strong>
+          {' '}
+          pour chaque pays selon les valeurs des indicateurs et le classement choisi
+          par l&apos;utilisateur, ce qui permet de donner une idée sur les pays ayant
+          les meilleures conditions. Ce score est la moyenne pondérée des indicateurs
+          normalisés en indice sans dimension. La pondération se fait avec les poids
+          indiqués par l&apos;utilisateur à l&apos;aide de la liste.
+          L&apos;indice pour un indicateur donné est égal à :
+          (valeur pour le pays - valeur minimale)/(valeur maximale - valeur minimale)
+        </p>
+
+      </div>
+
+      <div className="Article__section">
+        <h2 className="section__title">
           Visualisation des données
         </h2>
 
         <p className="section__text">
-          Pour pouvoir representer et croiser toutes ces données de la
+          Pour pouvoir représenter et croiser toutes ces données de la
           façon la plus expressive possible,
-          nous avons opté pour l&apos;utilisation de deux représentation.
+          nous avons opté pour l&apos;utilisation de deux représentations.
 
         </p>
         <ul className="section__list">
@@ -139,10 +169,11 @@ function Article() {
             Représentation carthographique :
             {' '}
             <span className="section_def">
-              est basée sur une carte où on peut distinguer les
-              différents pays du monde. Elle nous permet de localiser géographiquement les
-              informations. En effet, les surfaces des pays ont une couleur qui peut aller du
-              rouge jusqu&apos;au vert et qui représente les conditions de vie de ce pays.
+              cette carte permet de distinguer quels pays du monde correspond le plus aux
+              critères de l&apos;utilisateur. Elle nous permet de localiser géographiquement les
+              informations en mettant parfois en lumière les zones du globe désavantagées par le
+              choix de l&apos;ordre des indicateurs pris en compte. Pour ce faire, un gradient
+              indique les pays en fonction de leur score.
 
             </span>
           </li>
@@ -153,8 +184,7 @@ function Article() {
               Pour la comparaison des différents pays du monde selon un indicateur bien précis,
               nous avons opté pour l&apos;utilisation des barplots. Ce choix nous a paru très
               intéressant en terme de visualisation puisqu&apos;il nous permet de distinguer
-              très facilement les différences
-              et nous permettra d&apos;aboutir à des conclusions adéquates.
+              très facilement les différences tout en accédant à une donnée plus détaillé.
               {' '}
             </span>
 
@@ -277,33 +307,8 @@ function Article() {
           , nous avons opté cette fois-ci pour Gapminder, où nous avons trouvé
           les données en csv et que nous avons converties en JSON pour tout uniformiser.
         </p>
-
       </div>
-      <div className="Article__section">
-        <h2 className="section__title">
-          Traitement de données
-        </h2>
-        <p className="section__text">
-          Nous avons traité toutes les données récupérées de sources différentes
-          pour créer une source commune (
-          {' '}
-          <strong>un tableau d&apos;objets</strong>
-          {' '}
-          ) regroupant directement tous les pays et les valeurs des indicateurs
-          leur correspondant. Ainsi, la visualisation devient nettement plus abordable.
 
-        </p>
-        <p className="section__text">
-          De plus, en ce qui concerne la map, nous calculons un
-          {' '}
-          <strong>score</strong>
-          {' '}
-          pour chaque pays selon les valeurs des indicateurs et le classement choisi
-          par l&apos;utilisateur, ce qui permettra de donner une idée sur les pays ayant
-          les meilleures conditions par ordre de couleur sur la map.
-        </p>
-
-      </div>
 
       <div className="Article__section">
         <h2 className="section__title">
