@@ -38,10 +38,11 @@ function getScore(country, currentItems, indicatorsMinMax) {
     if (country[indicator.id] !== undefined && country[indicator.id] !== null) {
       const minMax = find(indicatorsMinMax, (element) => (element.id === indicator.id));
       score
-      += (7 - index) * ((country[indicator.id] - minMax.min) / (minMax.max - minMax.min));
+      += (currentItems.length - index)
+      * ((country[indicator.id] - minMax.min) / (minMax.max - minMax.min));
     }
   });
-  score /= 7;
+  score /= currentItems.length;
   return score;
 }
 
