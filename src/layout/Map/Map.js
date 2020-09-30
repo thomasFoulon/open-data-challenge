@@ -32,24 +32,7 @@ function getRank(country, scores) {
   return currentScore.score;
 }
 
-function setEventOnEachFeature(country, layer, selectedCountryIds, onClickOnCountry) {
-  layer.bindTooltip(`${country.properties.name}`);
-  layer.on('mouseover', (e) => {
-    e.target.openTooltip(e.latlng);
-  });
-  layer.on('mouseout', (e) => {
-    e.target.closeTooltip();
-  });
-  layer.on('mousemove', (e) => {
-    e.target.getTooltip().setLatLng(e.latlng);
-  });
-  layer.on('click', () => {
-    selectedCountryIds.add(country.id);
-    onClickOnCountry(Array.from(selectedCountryIds));
-  });
-}
-
-function MapContainer({ scores, selectedCountryIds, onClickOnCountry }) {
+function MapContainer({ scores, onClickOnCountry }) {
   return (
     <Map
       id="Map"
@@ -72,8 +55,18 @@ function MapContainer({ scores, selectedCountryIds, onClickOnCountry }) {
         steps={7}
         mode="e"
         style={style}
-        onEachFeature={(country, layer) => {
-          setEventOnEachFeature(country, layer, selectedCountryIds, onClickOnCountry);
+        onClick={(event) => {
+          onClickOnCountry(event.layer.feature.id);
+        }}
+        onMouseOver={(e) => {
+          e.layer.bindTooltip(`${e.layer.feature.properties.name} <br /> ${getRank(e.layer.feature, scores)}`);
+          e.layer.openTooltip(e.latlng);
+        }}
+        onMouseOut={(e) => {
+          e.layer.closeTooltip();
+        }}
+        onMouseMove={(e) => {
+          e.layer.getTooltip().setLatLng(e.latlng);
         }}
       />
     </Map>
