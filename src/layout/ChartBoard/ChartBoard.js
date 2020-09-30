@@ -1,104 +1,66 @@
 import React, { useState } from 'react';
 
-import { Chart } from 'react-chartjs-2';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSortNumericDown, faSortNumericDownAlt } from '@fortawesome/free-solid-svg-icons';
+
+import Switch from 'react-switch';
 
 import './ChartBoard.css';
 import CountriesSelection from './CountriesSelection';
 import BarPlot from './BarPlot';
 
-function ChartBoard() {
+function ChartBoard({ processedData, indicators }) {
   const [selectedCountryIds, setSelectedCountryIds] = useState(new Set());
-  const [currentDatasetId, setCurrentDatasetId] = useState(0);
-  const { color } = Chart.helpers;
-  const countries = [
-    {
-      id: 'a', name: 'France', gdp: 351, transport: 34
-    },
-    {
-      id: 'b', name: 'Etats-Unis', gdp: 1542, transport: 56
-    },
-    {
-      id: 'c', name: 'Maroc', gdp: 657, transport: 20
-    },
-    {
-      id: 'd', name: 'Argentine', gdp: 210, transport: 86
-    },
-    {
-      id: 'e', name: 'Portugal', gdp: 124, transport: 200
-    },
-    {
-      id: 'f', name: 'Chili', gdp: 40, transport: 25
-    },
-    {
-      id: 'g', name: 'Chine', gdp: 1309, transport: 78
-    },
-    {
-      id: 'h', name: 'Japon', gdp: 32, transport: 3
-    },
-    {
-      id: 'i', name: 'Russie', gdp: 351, transport: 34
-    },
-    {
-      id: 'j', name: 'Egypte', gdp: 1542, transport: 56
-    },
-    {
-      id: 'k', name: 'Inde', gdp: 657, transport: 20
-    },
-    {
-      id: 'l', name: 'Pérou', gdp: 210, transport: 86
-    },
-    {
-      id: 'm', name: 'Vénézuela', gdp: 124, transport: 200
-    },
-    {
-      id: 'n', name: 'Ethiopie', gdp: 40, transport: 25
-    },
-    {
-      id: 'o', name: 'Belgique', gdp: 1309, transport: 78
-    },
-    {
-      id: 'p', name: 'Luxembourg', gdp: 32, transport: 3
-    }
-  ];
-
-  const datasets = [{
-    label: 'PIB/hab',
-    property: 'gdp',
-    backgroundColor: color('red').alpha(0.5).rgbString(),
-    borderColor: 'red',
-    borderWidth: 1
-  }, {
-    label: 'Qualité des transports',
-    property: 'transport',
-    backgroundColor: color('blue').alpha(0.5).rgbString(),
-    borderColor: 'blue',
-    borderWidth: 1
-  }];
+  const [currentIndicatorId, setCurrentIndicatorId] = useState(0);
+  const [displayWorstCountries, setDisplayWorstCountries] = useState(false);
 
   const handleChange = (event) => {
-    setCurrentDatasetId(event.target.value);
+    setCurrentIndicatorId(event.target.value);
   };
 
-  const selectedCountries = countries.filter((country) => selectedCountryIds.has(country.id));
+  const selectedCountries = processedData.filter((country) => selectedCountryIds.has(country.id));
   return (
     <div id="ChartBoard" className="ChartBoard">
       <div className="selection">
         <CountriesSelection
-          countries={countries}
+          countries={processedData.map((country) => ({ id: country.id, name: country.name }))}
           selectedCountryIds={selectedCountryIds}
           onChange={(selectedIds) => setSelectedCountryIds(new Set(selectedIds))}
         />
         <div className="indicatorSelector">
-          <select value={currentDatasetId} onChange={handleChange}>
-            {datasets.map(
-              (dataset, index) => (
-                <option key={dataset.label} value={index}>{dataset.label}</option>
+          <select value={currentIndicatorId} onChange={handleChange}>
+            {indicators.map(
+              (indicator, index) => (
+                <option key={indicator.id} value={index}>{indicator.content}</option>
               )
             )}
           </select>
         </div>
+        <div className="bestWorstSelector">
+          <FontAwesomeIcon
+            icon={faSortNumericDown}
+            size="lg"
+          />
+          <Switch
+            className="bestWorstSwitch"
+            onChange={(checked) => setDisplayWorstCountries(checked)}
+            checked={displayWorstCountries}
+            checkedIcon={false}
+            uncheckedIcon={false}
+            onColor="#ff0000"
+          />
+          <FontAwesomeIcon
+            icon={faSortNumericDownAlt}
+            size="lg"
+          />
+        </div>
       </div>
-      <BarPlot datasets={datasets} datasetId={currentDatasetId} countries={selectedCountries} />
+      <BarPlot
+        selectedCountries={selectedCountries}
+        indicators={indicators}
+        currentIndicatorId={currentIndicatorId}
+        displayWorstCountries={displayWorstCountries}
+      />
     </div>
   );
 }
