@@ -1,6 +1,6 @@
-import { map, filter, find } from 'lodash';
+import { map, find } from 'lodash';
 
-import transport from '../assets/json/transport_quality.json';
+import { csv } from 'd3';
 
 export const fetchCountries = async () => {
   const response = await fetch(
@@ -51,16 +51,23 @@ export const fetchIndicatorByCountry = async (country, ind) => {
   return data[1];
 };
 
-export const fetchTransportQualityAllCountries = () => transport;
+export const fetchTransportQualityAllCountries = () => csv('./data/transport-quality.csv').then((data) => {
+  data.forEach((d) => {
+    // eslint-disable-next-line no-param-reassign
+    if (d['2018'] !== '') { d['2018'] = +d['2018']; }
+  });
 
-export const fetchTransportQualityByCountry = (countryName) => {
-  const transportByCountry = filter(
-    transport,
-    ({ country }) => country === countryName
-  );
+  return data;
+});
 
-  return transportByCountry;
-};
+export const fetchInequalityAllCountries = () => csv('./data/inequality.csv').then((data) => {
+  data.forEach((d) => {
+    // eslint-disable-next-line no-param-reassign
+    if (d['2020'] !== '') { d['2020'] = +d['2020']; }
+  });
+
+  return data;
+});
 
 export const processData = (
   countries,
@@ -70,7 +77,8 @@ export const processData = (
   healthAll,
   pollutionAll,
   unemploymentAll,
-  transportAll
+  transportAll,
+  inequalityAll
 ) => {
   const processedData = map(countries, ([id, name]) => ({
     id,
@@ -82,6 +90,7 @@ export const processData = (
     pollution: find(pollutionAll, { countryiso3code: id })?.value,
     unemployment: find(unemploymentAll, { countryiso3code: id })?.value,
     transportQuality: find(transportAll, { country: name })?.['2018'],
+    inequality: find(inequalityAll, { country: name })?.['2020'],
   }));
 
   return processedData;
