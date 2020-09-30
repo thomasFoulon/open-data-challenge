@@ -75,7 +75,7 @@ function MapContainer({ scores, onClickOnCountry }) {
       <Choropleth
         data={topology}
         valueProperty={(country) => getRank(country, scores)}
-        scale={isColorBlind ? ['#F3B400', '#BB8B00', '#837171', '#0079CE', '#3994FC'].reverse() : ['red', 'orange', 'green']}
+        scale={isColorBlind ? ['#F3B400', '#BB8B00', '#837171', '#0079CE', '#3994FC'] : ['red', 'orange', 'green']}
         steps={7}
         mode="e"
         style={style}
@@ -103,7 +103,7 @@ function MapContainer({ scores, onClickOnCountry }) {
           name="colorBlindBtn"
           className="colorGradient"
           style={{
-            background: isColorBlind ? 'linear-gradient(to left, #F3B400, #BB8B00,#837171,#0079CE,#3994FC)' : 'linear-gradient(to right, red, orange, green)',
+            background: isColorBlind ? 'linear-gradient(to right, #827170, #F2B400,#0379CE)' : 'linear-gradient(to right, red, orange, green)',
           }}
 
           onClick={(e) => {
