@@ -9,15 +9,15 @@ import './ChartBoard.css';
 import CountriesSelection from './CountriesSelection';
 import BarPlot from './BarPlot';
 
-function ChartBoard({ processedData, indicators }) {
-  const [selectedCountryIds, setSelectedCountryIds] = useState(new Set());
-  const [currentIndicatorId, setCurrentIndicatorId] = useState(0);
+function ChartBoard({
+  processedData, indicators, scores, selectedCountryIds, setSelectedCountryIds
+}) {
+  const [currentIndicatorIndex, setCurrentIndicatorIndex] = useState(0);
   const [displayWorstCountries, setDisplayWorstCountries] = useState(false);
 
   const handleChange = (event) => {
-    setCurrentIndicatorId(event.target.value);
+    setCurrentIndicatorIndex(event.target.value);
   };
-
   const selectedCountries = processedData.filter((country) => selectedCountryIds.has(country.id));
   return (
     <div id="ChartBoard" className="ChartBoard">
@@ -28,7 +28,7 @@ function ChartBoard({ processedData, indicators }) {
           onChange={(selectedIds) => setSelectedCountryIds(new Set(selectedIds))}
         />
         <div className="indicatorSelector">
-          <select value={currentIndicatorId} onChange={handleChange}>
+          <select value={currentIndicatorIndex} onChange={handleChange}>
             {indicators.map(
               (indicator, index) => (
                 <option key={indicator.id} value={index}>{indicator.content}</option>
@@ -58,7 +58,8 @@ function ChartBoard({ processedData, indicators }) {
       <BarPlot
         selectedCountries={selectedCountries}
         indicators={indicators}
-        currentIndicatorId={currentIndicatorId}
+        scores={scores}
+        currentIndicatorIndex={currentIndicatorIndex}
         displayWorstCountries={displayWorstCountries}
       />
     </div>

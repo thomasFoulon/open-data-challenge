@@ -1,17 +1,24 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Map, TileLayer } from 'react-leaflet';
 import Choropleth from 'react-leaflet-choropleth';
 
 import 'leaflet/dist/leaflet.css';
 import './Map.css';
 
+import { faEye } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
 import topology from '../../assets/json/countries-50m.json';
 
 const style = {
-  fillColor: '#F28F3B',
-  weight: 1,
-  color: 'darkgrey',
+  weight: 0.5,
+  color: 'white',
   fillOpacity: 0.7,
+};
+
+const styleHovered = {
+  weight: 2,
+  color: 'white',
 };
 
 const mapBounds = [
@@ -32,21 +39,8 @@ function getRank(country, scores) {
   return currentScore.score;
 }
 
-function setEventOnEachFeature(country, layer) {
-  layer.bindTooltip(`${country.properties.name}`);
-  layer.on('mouseover', (e) => {
-    e.target.openTooltip(e.latlng);
-  });
-  layer.on('mouseout', (e) => {
-    e.target.closeTooltip();
-  });
-  layer.on('mousemove', (e) => {
-    e.target.getTooltip().setLatLng(e.latlng);
-  });
-}
-
-function MapContainer(props) {
-  const { scores } = props;
+function MapContainer({ scores, onClickOnCountry }) {
+  const [isColorBlind, setIsColorBlind] = useState(true);
   return (
     <Map
       id="Map"
@@ -65,14 +59,58 @@ function MapContainer(props) {
       <Choropleth
         data={topology}
         valueProperty={(country) => getRank(country, scores)}
-        scale={['#b3cde0', '#011f4b']}
+        scale={isColorBlind ? ['#F3B400', '#BB8B00', '#837171', '#0079CE', '#3994FC'].reverse() : ['red', 'orange', 'green']}
         steps={7}
         mode="e"
         style={style}
-        onEachFeature={(country, layer) => {
-          setEventOnEachFeature(country, layer);
+        onClick={(event) => {
+          onClickOnCountry(event.layer.feature.id);
+        }}
+        onMouseOver={(e) => {
+          e.layer.bindTooltip(`${e.layer.feature.properties.name} <br /> ${getRank(e.layer.feature, scores)}`);
+          e.layer.openTooltip(e.latlng);
+          e.layer.setStyle(styleHovered);
+        }}
+        onMouseOut={(e) => {
+          e.layer.closeTooltip();
+          e.layer.setStyle(style);
+        }}
+        onMouseMove={(e) => {
+          e.layer.getTooltip().setLatLng(e.latlng);
         }}
       />
+      <div className="colorGradient-container">
+        <span className="color-text--1">Mauvais</span>
+        {/* eslint-disable */}
+        <div
+          id="colorBlindBtn"
+          name="colorBlindBtn"
+          className="colorGradient"
+          style={{
+            background: isColorBlind ? 'linear-gradient(to left, #F3B400, #BB8B00,#837171,#0079CE,#3994FC)' : 'linear-gradient(to right, red, orange, green)',
+          }}
+
+          onClick={(e) => {
+            setIsColorBlind(value => !value)
+          }}
+        />
+        { /* eslint-enable */}
+
+        <span className="color-text--2">Excellent</span>
+      </div>
+      <button
+        type="button"
+        className="iconEye-container"
+        onClick={() => {
+          setIsColorBlind((value) => !value);
+        }}
+        onKeyDown={() => {
+
+        }}
+      >
+        <FontAwesomeIcon icon={faEye} size="lg" className="iconEye" />
+
+      </button>
     </Map>
   );
 }

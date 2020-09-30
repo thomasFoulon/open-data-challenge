@@ -60,6 +60,15 @@ export const fetchTransportQualityAllCountries = () => csv('./data/transport-qua
   return data;
 });
 
+export const fetchInequalityAllCountries = () => csv('./data/inequality.csv').then((data) => {
+  data.forEach((d) => {
+    // eslint-disable-next-line no-param-reassign
+    if (d['2020'] !== '') { d['2020'] = +d['2020']; }
+  });
+
+  return data;
+});
+
 export const processData = (
   countries,
   gdpAll,
@@ -68,7 +77,8 @@ export const processData = (
   healthAll,
   pollutionAll,
   unemploymentAll,
-  transportAll
+  transportAll,
+  inequalityAll
 ) => {
   const processedData = map(countries, ([id, name]) => ({
     id,
@@ -80,6 +90,7 @@ export const processData = (
     pollution: find(pollutionAll, { countryiso3code: id })?.value,
     unemployment: find(unemploymentAll, { countryiso3code: id })?.value,
     transportQuality: find(transportAll, { country: name })?.['2018'],
+    inequality: find(inequalityAll, { country: name })?.['2020'],
   }));
 
   return processedData;

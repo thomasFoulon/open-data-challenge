@@ -111,6 +111,13 @@ function Article() {
                 Emissions de CO2 en tonnes par habitant
               </span>
             </li>
+            <li>
+              Inégalité:
+              {' '}
+              <span className="section_def">
+                Différences de revenus au sein de la société selon le coefficient de Gini
+              </span>
+            </li>
           </ul>
           Ces différents jeux de données proviennent principalement de
           {' '}

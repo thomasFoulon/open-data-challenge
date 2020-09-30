@@ -30,7 +30,14 @@ const indicators = [
   {
     id: 'pollution', content: 'Pollution', detail: 'Emissions de CO2 en tonnes par habitant', desc: false
   },
+  {
+    id: 'inequality', content: 'Inégalité', detail: 'Différences de revenus au sein de la société selon le coefficient de Gini', desc: false
+  }
 ];
+
+const scoreIndicator = {
+  id: 'score', content: 'Score calculé', detail: 'Score calculé par rapport à votre classement des indicateurs.', desc: true
+};
 
 function getScore(country, currentItems, indicatorsMinMax) {
   let score = 0;
@@ -38,8 +45,8 @@ function getScore(country, currentItems, indicatorsMinMax) {
     if (country[indicator.id] !== undefined && country[indicator.id] !== null) {
       const minMax = find(indicatorsMinMax, (element) => (element.id === indicator.id));
       score
-      += (currentItems.length - index)
-      * ((country[indicator.id] - minMax.min) / (minMax.max - minMax.min));
+        += (currentItems.length - index)
+        * ((country[indicator.id] - minMax.min) / (minMax.max - minMax.min));
     }
   });
   score /= currentItems.length;
@@ -57,6 +64,15 @@ function getAllCountriesScores(processedData, items, indicatorsMinMax) {
 
 function Main(props) {
   const { processedData } = props;
+  const [selectedCountryIds, setSelectedCountryIds] = useState(new Set());
+  const addToSelectedCountryIds = (countryId) => {
+    if (selectedCountryIds.has(countryId)) {
+      selectedCountryIds.delete(countryId);
+    } else {
+      selectedCountryIds.add(countryId);
+    }
+    setSelectedCountryIds(new Set(Array.from(selectedCountryIds)));
+  };
 
   const indicatorsMinMax = map(indicators, (indicator) => {
     const minValue = minBy(processedData, indicator.id)[indicator.id];
@@ -74,7 +90,11 @@ function Main(props) {
 
   return (
     <div className="Main">
-      <MapContainer scores={scores} />
+      <MapContainer
+        scores={scores}
+        selectedCountryIds={selectedCountryIds}
+        onClickOnCountry={(countryId) => addToSelectedCountryIds(countryId)}
+      />
       <OrderableList
         processedData={processedData}
         items={indicators}
@@ -82,7 +102,13 @@ function Main(props) {
           setScore(getAllCountriesScores(processedData, newItems, indicatorsMinMax));
         }}
       />
-      <ChartBoard processedData={processedData} indicators={indicators} />
+      <ChartBoard
+        processedData={processedData}
+        indicators={[scoreIndicator, ...indicators]}
+        scores={scores}
+        selectedCountryIds={selectedCountryIds}
+        setSelectedCountryIds={setSelectedCountryIds}
+      />
     </div>
   );
 }
