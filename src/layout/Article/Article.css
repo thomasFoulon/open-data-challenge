@@ -41,6 +41,10 @@
   font-size: 3rem;
 }
 
+.section__title--secondary {
+  font-size: 2.4rem;
+}
+
 .section__text:not(:last-child) {
   margin-bottom: 1.6rem;
 }
