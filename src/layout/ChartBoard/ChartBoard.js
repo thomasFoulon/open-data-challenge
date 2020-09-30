@@ -1,5 +1,10 @@
 import React, { useState } from 'react';
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSortNumericDown, faSortNumericDownAlt } from '@fortawesome/free-solid-svg-icons';
+
+import Switch from 'react-switch';
+
 import './ChartBoard.css';
 import CountriesSelection from './CountriesSelection';
 import BarPlot from './BarPlot';
@@ -7,6 +12,7 @@ import BarPlot from './BarPlot';
 function ChartBoard({ processedData, indicators }) {
   const [selectedCountryIds, setSelectedCountryIds] = useState(new Set());
   const [currentIndicatorId, setCurrentIndicatorId] = useState(0);
+  const [displayWorstCountries, setDisplayWorstCountries] = useState(false);
 
   const handleChange = (event) => {
     setCurrentIndicatorId(event.target.value);
@@ -30,11 +36,30 @@ function ChartBoard({ processedData, indicators }) {
             )}
           </select>
         </div>
+        <div className="bestWorstSelector">
+          <FontAwesomeIcon
+            icon={faSortNumericDown}
+            size="lg"
+          />
+          <Switch
+            className="bestWorstSwitch"
+            onChange={(checked) => setDisplayWorstCountries(checked)}
+            checked={displayWorstCountries}
+            checkedIcon={false}
+            uncheckedIcon={false}
+            onColor="#ff0000"
+          />
+          <FontAwesomeIcon
+            icon={faSortNumericDownAlt}
+            size="lg"
+          />
+        </div>
       </div>
       <BarPlot
         selectedCountries={selectedCountries}
         indicators={indicators}
         currentIndicatorId={currentIndicatorId}
+        displayWorstCountries={displayWorstCountries}
       />
     </div>
   );

@@ -13,7 +13,7 @@
 }
 
 .ChartBoard > .selection > .countriesSelection {
-  flex: 2;
+  flex: 3;
 }
 
 .ChartBoard > .selection > .indicatorSelector {
@@ -26,6 +26,24 @@
   width: 80%;
 }
 
+.ChartBoard > .selection > .bestWorstSelector {
+  flex: 1;
+  margin-top: 27px;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.ChartBoard > .selection > .bestWorstSelector > .bestWorstSwitch {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.ChartBoard > .selection > .bestWorstSelector > svg {
+  margin-top: 5px;
+}
+
 .ChartBoard > .chart {
   width: 80%;
   height: 100%;
@@ -34,4 +52,10 @@
 
 .ChartBoard > p.chart {
   text-align: center;
+}
+
+@media screen and (max-width: 1100px) {
+  .ChartBoard > .selection > .countriesSelection {
+    flex: 2;
+  }
 }
