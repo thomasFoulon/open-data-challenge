@@ -5,13 +5,13 @@ import Choropleth from 'react-leaflet-choropleth';
 import 'leaflet/dist/leaflet.css';
 import './Map.css';
 
-import topology from '../../context/countries-50m.json';
+import topology from '../../assets/json/countries-50m.json';
 
 const style = {
   fillColor: '#F28F3B',
   weight: 1,
-  color: 'grey',
-  fillOpacity: 0.5,
+  color: 'darkgrey',
+  fillOpacity: 0.7,
 };
 
 const mapBounds = [
@@ -57,8 +57,8 @@ function MapContainer(props) {
       maxBounds={mapBounds}
     >
       <TileLayer
-        url="https://tiles.stadiamaps.com/tiles/outdoors/{z}/{x}/{y}{r}.png"
-        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        url="https://server.arcgisonline.com/ArcGIS/rest/services/World_Shaded_Relief/MapServer/tile/{z}/{y}/{x}"
+        attribution="Tiles &copy; Esri &mdash; Source: Esri"
         noWrap
         bounds={mapBounds}
       />
@@ -70,7 +70,7 @@ function MapContainer(props) {
         mode="e"
         style={style}
         onEachFeature={(country, layer) => {
-          setEventOnEachFeature(country, layer, scores);
+          setEventOnEachFeature(country, layer);
         }}
       />
     </Map>
