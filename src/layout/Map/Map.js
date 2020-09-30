@@ -1,16 +1,19 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Map, TileLayer } from 'react-leaflet';
 import Choropleth from 'react-leaflet-choropleth';
 
 import 'leaflet/dist/leaflet.css';
 import './Map.css';
 
+import { faEye } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
 import topology from '../../assets/json/countries-50m.json';
 
 const style = {
   fillColor: '#F28F3B',
-  weight: 1,
-  color: 'darkgrey',
+  weight: 0.5,
+  color: 'white',
   fillOpacity: 0.7,
 };
 
@@ -47,6 +50,7 @@ function setEventOnEachFeature(country, layer) {
 
 function MapContainer(props) {
   const { scores } = props;
+  const [isColorBlind, setIsColorBlind] = useState(true);
   return (
     <Map
       id="Map"
@@ -65,7 +69,7 @@ function MapContainer(props) {
       <Choropleth
         data={topology}
         valueProperty={(country) => getRank(country, scores)}
-        scale={['#b3cde0', '#011f4b']}
+        scale={isColorBlind ? ['#F3B400', '#BB8B00', '#837171', '#0079CE', '#3994FC'].reverse() : ['red', 'orange', 'green']}
         steps={7}
         mode="e"
         style={style}
@@ -73,6 +77,39 @@ function MapContainer(props) {
           setEventOnEachFeature(country, layer);
         }}
       />
+
+      <div className="colorGradient-container">
+        <span className="color-text--1">Mauvais</span>
+        {/* eslint-disable */}
+        <div
+          id="colorBlindBtn"
+          name="colorBlindBtn"
+          className="colorGradient"
+          style={{
+            background: isColorBlind ? 'linear-gradient(to left, #F3B400, #BB8B00,#837171,#0079CE,#3994FC)' : 'linear-gradient(to right, red, orange, green)',
+          }}
+
+          onClick={(e) => {
+            setIsColorBlind(value => !value)
+          }}
+        />
+        { /* eslint-enable */}
+
+        <span className="color-text--2">Excellent</span>
+      </div>
+      <button
+        type="button"
+        className="iconEye-container"
+        onClick={() => {
+          setIsColorBlind((value) => !value);
+        }}
+        onKeyDown={() => {
+
+        }}
+      >
+        <FontAwesomeIcon icon={faEye} size="lg" className="iconEye" />
+
+      </button>
     </Map>
   );
 }

@@ -19,7 +19,7 @@ const indicators = [
     id: 'transportQuality', content: 'Qualité du transport', detail: 'Qualité des infrastructures de transport et de logistique sur une échelle de 1 à 5', desc: true
   },
   {
-    id: 'literacy', content: 'Qualité de l’éducation', detail: 'Taux d\'alphabétisation en % de la population agée de plus de 15 ans', desc: true
+    id: 'literacy', content: 'Qualité de l’éducation', detail: 'Taux d\'alphabétisation en % de la population agée de plus de 15 ans', desc: false,
   },
   {
     id: 'unemployment', content: 'Taux de chômage', detail: 'En % de la force de travail totale', desc: false
@@ -37,8 +37,12 @@ function getScore(country, currentItems, indicatorsMinMax) {
   currentItems.forEach((indicator, index) => {
     if (country[indicator.id] !== undefined && country[indicator.id] !== null) {
       const minMax = find(indicatorsMinMax, (element) => (element.id === indicator.id));
+      let coef = 1;
+
+      if (!indicator.desc) coef = -1;
+      if (index === 0) coef *= 3;
       score
-      += (currentItems.length - index)
+      += coef * (currentItems.length - index)
       * ((country[indicator.id] - minMax.min) / (minMax.max - minMax.min));
     }
   });
@@ -63,8 +67,8 @@ function Main(props) {
     const maxValue = maxBy(processedData, indicator.id)[indicator.id];
     return {
       id: indicator.id,
-      min: indicator.desc ? minValue : maxValue,
-      max: indicator.desc ? maxValue : minValue
+      min: minValue,
+      max: maxValue,
     };
   });
 
