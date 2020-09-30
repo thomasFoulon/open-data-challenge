@@ -130,7 +130,7 @@ function MapContainer({ scores, onClickOnCountry }) {
       >
         <FontAwesomeIcon icon={faEye} size="lg" className="iconEye" />
       </button>
-      <ReactTooltip id="tooltipButton" effect="solid" />
+      <ReactTooltip id="tooltipButton" effect="solid" place="right" />
 
       <button
         type="button"
@@ -141,10 +141,12 @@ function MapContainer({ scores, onClickOnCountry }) {
         onKeyDown={() => {
 
         }}
+        data-tip="Afficher les 3 meilleurs pays"
+        data-for="tooltipPodium"
       >
         <FontAwesomeIcon icon={faWindowRestore} size="lg" className="iconWindow" />
-
       </button>
+      <ReactTooltip id="tooltipPodium" effect="solid" place="right" />
       <Podium
         country1={top3Countries[0].name}
         country2={top3Countries[1].name}
