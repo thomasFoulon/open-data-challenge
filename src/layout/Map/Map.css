@@ -69,3 +69,29 @@
   cursor: pointer;
 
 }
+
+
+.iconWindow-container{
+  border-radius: 3px;
+  position: absolute;
+  left: 1.2rem;
+  bottom: 5.4rem;
+  z-index: 2000;
+  padding: 0.5rem;
+  background: white;
+  border: 1px solid rgba(0,0,0,0.15);
+  cursor: pointer;
+
+}
+
+.iconWindow-container:hover {
+  border-radius: 3px;
+  position: absolute;
+  left: 1.2rem;
+  bottom: 5.4rem;
+  z-index: 1000;
+  padding: 0.5rem;
+  background: rgb(238, 237, 237);
+  border: 1px solid rgba(0,0,0,0.15);
+
+}

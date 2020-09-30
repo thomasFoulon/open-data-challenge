@@ -51,7 +51,7 @@ export const fetchIndicatorByCountry = async (country, ind) => {
   return data[1];
 };
 
-export const fetchTransportQualityAllCountries = () => csv('./data/transport-quality.csv').then((data) => {
+export const fetchTransportQualityAllCountries = () => csv('data/transport-quality.csv').then((data) => {
   data.forEach((d) => {
     // eslint-disable-next-line no-param-reassign
     if (d['2018'] !== '') { d['2018'] = +d['2018']; }

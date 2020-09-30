@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Map, TileLayer } from 'react-leaflet';
 import Choropleth from 'react-leaflet-choropleth';
 import ReactTooltip from 'react-tooltip';
@@ -6,8 +6,11 @@ import ReactTooltip from 'react-tooltip';
 import 'leaflet/dist/leaflet.css';
 import './Map.css';
 
-import { faEye } from '@fortawesome/free-solid-svg-icons';
+import { faEye, faWindowRestore } from '@fortawesome/free-solid-svg-icons';
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
+import Podium from '../../components/Podium/Podium';
 
 import topology from '../../assets/json/countries-50m.json';
 
@@ -40,8 +43,21 @@ function getRank(country, scores) {
   return currentScore.score;
 }
 
+function getTop3(scores) {
+  const scoresSorted = scores.sort(compare);
+  return scoresSorted.slice(0, 3);
+}
+function compare(score1, score2) {
+  return score1.score < score2.score;
+}
 function MapContainer({ scores, onClickOnCountry }) {
   const [isColorBlind, setIsColorBlind] = useState(true);
+  const [isPodiumHidden, setIsPodiumHidden] = useState(true);
+  let top3Countries = getTop3(scores);
+  useEffect(() => {
+    top3Countries = getTop3(scores);
+  }, [top3Countries]);
+
   return (
     <Map
       id="Map"
@@ -115,6 +131,26 @@ function MapContainer({ scores, onClickOnCountry }) {
         <FontAwesomeIcon icon={faEye} size="lg" className="iconEye" />
       </button>
       <ReactTooltip id="tooltipButton" effect="solid" />
+
+      <button
+        type="button"
+        className="iconWindow-container"
+        onClick={() => {
+          setIsPodiumHidden((value) => !value);
+        }}
+        onKeyDown={() => {
+
+        }}
+      >
+        <FontAwesomeIcon icon={faWindowRestore} size="lg" className="iconWindow" />
+
+      </button>
+      <Podium
+        country1={top3Countries[0].name}
+        country2={top3Countries[1].name}
+        country3={top3Countries[2].name}
+        hidden={isPodiumHidden}
+      />
     </Map>
   );
 }
