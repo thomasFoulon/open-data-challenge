@@ -4,7 +4,7 @@ import { csv } from 'd3';
 
 export const fetchCountries = async () => {
   const response = await fetch(
-    'http://api.worldbank.org/v2/country/?format=json&per_page=350'
+    '//api.worldbank.org/v2/country/?format=json&per_page=350'
   );
   const countries = await response.json();
   const nameCountries = map(countries[1], ({ name, id }) => [id, name]);
@@ -34,7 +34,7 @@ const setIndicator = (ind) => {
 export const fetchIndicatorAllCountries = async (ind) => {
   const indicator = setIndicator(ind);
   const response = await fetch(
-    `http://api.worldbank.org/v2/country/all/indicator/${indicator}?format=json&mrnev=1&per_page=350`
+    `//api.worldbank.org/v2/country/all/indicator/${indicator}?format=json&mrnev=1&per_page=350`
   );
   const data = await response.json();
 
@@ -44,7 +44,7 @@ export const fetchIndicatorAllCountries = async (ind) => {
 export const fetchIndicatorByCountry = async (country, ind) => {
   const indicator = setIndicator(ind);
   const response = await fetch(
-    `http://api.worldbank.org/v2/country/${country}/indicator/${indicator}?format=json&mrnev=5`
+    `//api.worldbank.org/v2/country/${country}/indicator/${indicator}?format=json&mrnev=5`
   );
   const data = await response.json();
 
