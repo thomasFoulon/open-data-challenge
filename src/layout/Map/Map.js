@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Map, TileLayer } from 'react-leaflet';
 import Choropleth from 'react-leaflet-choropleth';
+import ReactTooltip from 'react-tooltip';
 
 import 'leaflet/dist/leaflet.css';
 import './Map.css';
@@ -16,7 +17,7 @@ import topology from '../../assets/json/countries-50m.json';
 const style = {
   weight: 0.5,
   color: 'white',
-  fillOpacity: 0.7,
+  fillOpacity: 0.9,
 };
 
 const styleHovered = {
@@ -72,8 +73,8 @@ function MapContainer({ scores, onClickOnCountry }) {
       <Choropleth
         data={topology}
         valueProperty={(country) => getRank(country, scores)}
-        scale={isColorBlind ? ['#F3B400', '#BB8B00', '#837171', '#0079CE', '#3994FC'] : ['red', 'orange', 'green']}
-        steps={7}
+        scale={isColorBlind ? ['#e5deff', '#a69bed', '#0a3fcf'] : ['red', 'orange', 'green']}
+        steps={10}
         mode="e"
         style={style}
         onClick={(event) => {
@@ -92,7 +93,7 @@ function MapContainer({ scores, onClickOnCountry }) {
           e.layer.getTooltip().setLatLng(e.latlng);
         }}
       />
-      <div className="colorGradient-container">
+      <div className="colorGradient-container" data-tip="Cliquer pour changer la palette de couleur" data-for="tooltipDiv">
         <span className="color-text--1">Mauvais</span>
         {/* eslint-disable */}
         <div
@@ -100,7 +101,7 @@ function MapContainer({ scores, onClickOnCountry }) {
           name="colorBlindBtn"
           className="colorGradient"
           style={{
-            background: isColorBlind ? 'linear-gradient(to right, #827170, #F2B400,#0379CE)' : 'linear-gradient(to right, red, orange, green)',
+            background: isColorBlind ? 'linear-gradient(to right, #e5deff, #a69bed, #0a3fcf)' : 'linear-gradient(to right, red, orange, green)',
           }}
 
           onClick={(e) => {
@@ -111,6 +112,7 @@ function MapContainer({ scores, onClickOnCountry }) {
 
         <span className="color-text--2">Excellent</span>
       </div>
+      <ReactTooltip id="tooltipDiv" effect="solid" />
       <button
         type="button"
         className="iconEye-container"
@@ -120,10 +122,12 @@ function MapContainer({ scores, onClickOnCountry }) {
         onKeyDown={() => {
 
         }}
+        data-tip="Changer la palette de couleur"
+        data-for="tooltipButton"
       >
         <FontAwesomeIcon icon={faEye} size="lg" className="iconEye" />
-
       </button>
+      <ReactTooltip id="tooltipButton" effect="solid" place="right" />
 
       <button
         type="button"
@@ -134,10 +138,12 @@ function MapContainer({ scores, onClickOnCountry }) {
         onKeyDown={() => {
 
         }}
+        data-tip="Afficher les 3 meilleurs pays"
+        data-for="tooltipPodium"
       >
         <FontAwesomeIcon icon={faWindowRestore} size="lg" className="iconWindow" />
-
       </button>
+      <ReactTooltip id="tooltipPodium" effect="solid" place="right" />
       <Podium
         country1={top3Countries[0].name}
         country2={top3Countries[1].name}

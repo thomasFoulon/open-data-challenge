@@ -1,6 +1,7 @@
 import { map, find } from 'lodash';
 
-import { csv } from 'd3';
+import dataTransport from '../assets/json/transport-quality.json';
+import dataInequality from '../assets/json/inequality.json';
 
 export const fetchCountries = async () => {
   const response = await fetch(
@@ -51,23 +52,21 @@ export const fetchIndicatorByCountry = async (country, ind) => {
   return data[1];
 };
 
-export const fetchTransportQualityAllCountries = () => csv('data/transport-quality.csv').then((data) => {
-  data.forEach((d) => {
+export const fetchTransportQualityAllCountries = () => {
+  dataTransport.forEach((d) => {
     // eslint-disable-next-line no-param-reassign
     if (d['2018'] !== '') { d['2018'] = +d['2018']; }
   });
+  return dataTransport;
+};
 
-  return data;
-});
-
-export const fetchInequalityAllCountries = () => csv('./data/inequality.csv').then((data) => {
-  data.forEach((d) => {
+export const fetchInequalityAllCountries = () => {
+  dataInequality.forEach((d) => {
     // eslint-disable-next-line no-param-reassign
     if (d['2020'] !== '') { d['2020'] = +d['2020']; }
   });
-
-  return data;
-});
+  return dataInequality;
+};
 
 export const processData = (
   countries,

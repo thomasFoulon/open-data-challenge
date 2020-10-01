@@ -41,15 +41,18 @@ const scoreIndicator = {
 
 function getScore(country, currentItems, indicatorsMinMax) {
   let score = 0;
+  let sumWeight = 0;
   currentItems.forEach((indicator, index) => {
+    sumWeight += (currentItems.length - index);
     if (country[indicator.id] !== undefined && country[indicator.id] !== null) {
       const minMax = find(indicatorsMinMax, (element) => (element.id === indicator.id));
       score
         += (currentItems.length - index)
-        * ((country[indicator.id] - minMax.min) / (minMax.max - minMax.min));
+        * ((country[indicator.id] - minMax.min) / (minMax.max - minMax.min))
+        * (indicator.desc ? 1 : -1);
     }
   });
-  score /= currentItems.length;
+  score /= sumWeight;
   return score;
 }
 
@@ -79,8 +82,8 @@ function Main(props) {
     const maxValue = maxBy(processedData, indicator.id)[indicator.id];
     return {
       id: indicator.id,
-      min: indicator.desc ? minValue : maxValue,
-      max: indicator.desc ? maxValue : minValue
+      min: minValue,
+      max: maxValue
     };
   });
 
